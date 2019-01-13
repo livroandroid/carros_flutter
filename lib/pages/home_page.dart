@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
       itemBuilder: (ctx, idx) {
         final c = carros[idx];
         return Container(
+          height: 280,
           child: Card(
             child: Padding(
               padding: const EdgeInsets.only(left:12),
