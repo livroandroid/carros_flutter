@@ -2,8 +2,6 @@ import 'package:carros/domain/carro.dart';
 
 class CarroService {
 
-  // Exemplo HTTP
-
   static List<Carro> getCarros() {
     final carros = List.generate(50, (idx) {
       var url1 =
