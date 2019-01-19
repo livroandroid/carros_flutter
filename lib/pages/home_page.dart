@@ -1,4 +1,6 @@
+import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/services/carro_service.dart';
+import 'package:carros/utils/nav.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,15 +10,37 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Carros"),
       ),
-      body: Container(
-        padding: EdgeInsets.all(12),
-        child: _listView(),
+      body: _body(),
+    );
+  }
+
+  _body() {
+    return Container(
+      padding: EdgeInsets.all(12),
+      child: FutureBuilder(
+        future: CarroService.getCarros(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return _listView(snapshot.data);
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text("Sem dados",style: TextStyle(
+                color: Colors.grey,
+                fontSize: 26,
+                fontStyle: FontStyle.italic
+              ),),
+            );
+          } else {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
       ),
     );
   }
 
-  _listView() {
-    final carros = CarroService.getCarros();
+  _listView(List<Carro> carros) {
     return ListView.builder(
       itemCount: carros.length,
       itemBuilder: (ctx, idx) {
@@ -25,7 +49,7 @@ class HomePage extends StatelessWidget {
           height: 280,
           child: Card(
             child: Padding(
-              padding: const EdgeInsets.only(left:12),
+              padding: const EdgeInsets.only(left: 12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -36,16 +60,19 @@ class HomePage extends StatelessWidget {
                   ),
                   Text(
                     c.nome,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 25,
                       color: Colors.black,
                     ),
                   ),
                   Text(
-                    "Descrição...",
+                    c.desc,
+                    maxLines: 1,
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.black,
+                      color: Colors.grey,
                     ),
                   ),
                   ButtonTheme.bar(
