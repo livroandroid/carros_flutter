@@ -15,10 +15,13 @@ class HomePage extends StatelessWidget {
   }
 
   _body() {
+
+    Future future = CarroService.getCarros();
+
     return Container(
       padding: EdgeInsets.all(12),
       child: FutureBuilder(
-        future: CarroService.getCarros(),
+        future: future,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return _listView(snapshot.data);
