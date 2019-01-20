@@ -21,3 +21,9 @@ Manual de como usar as branches app dos carros.
     - Criada a classe CarrosListView
     - Na HomePage foi adicionada uma TabBar (classicos, esportivos, luxo)
     - Explicado como manter as abas vivas em memória.
+
+* 04_Persistencia
+
+    - Shared Preferences
+    - Arquivos
+    - Banco de Dados - SQLite
