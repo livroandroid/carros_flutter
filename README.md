@@ -14,4 +14,10 @@ Manual de como usar as branches app dos carros.
 * 02_WebServices_Carros
 
     - List de carros com Web Services
+    - FutureBuilder
 
+* 03_Tabs
+
+    - Criada a classe CarrosListView
+    - Na HomePage foi adicionada uma TabBar (classicos, esportivos, luxo)
+    - Explicado como manter as abas vivas em memória.
