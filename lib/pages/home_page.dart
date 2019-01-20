@@ -13,23 +13,18 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text("Carros"),
           bottom: TabBar(tabs: [
-            Tab(icon: Icon(Icons.directions_car)),
-            Tab(icon: Icon(Icons.directions_transit)),
-            Tab(icon: Icon(Icons.directions_bike)),
+            Tab(text: "Clássicos",icon: Icon(Icons.directions_car),),
+            Tab(text: "Esportivos",icon: Icon(Icons.directions_car),),
+            Tab(text: "Luxo",icon: Icon(Icons.directions_car),),
+
           ]),
         ),
-        body: _tabs(),
+        body: TabBarView(children: [
+          CarrosListView(TipoCarro.classicos),
+          CarrosListView(TipoCarro.esportivos),
+          CarrosListView(TipoCarro.luxo)
+        ]),
       ),
-    );
-  }
-
-  _tabs() {
-    return TabBarView(
-      children: [
-        CarrosListView(TipoCarro.classicos),
-        CarrosListView(TipoCarro.esportivos),
-        CarrosListView(TipoCarro.luxo),
-      ],
     );
   }
 

@@ -1,3 +1,4 @@
+
 class TipoCarro {
   static const String classicos = "classicos";
   static const String esportivos = "esportivos";
@@ -14,14 +15,15 @@ class Carro {
   String latitude;
   String longitude;
 
-  Carro({this.id,
-    this.nome,
-    this.tipo,
-    this.desc,
-    this.urlFoto,
-    this.urlVideo,
-    this.latitude,
-    this.longitude});
+  Carro(
+      {this.id,
+        this.nome,
+        this.tipo,
+        this.desc,
+        this.urlFoto,
+        this.urlVideo,
+        this.latitude,
+        this.longitude});
 
   factory Carro.fromJson(Map<String, dynamic> json) {
     return Carro(
