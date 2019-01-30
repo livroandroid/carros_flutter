@@ -15,19 +15,20 @@ class _HomePageState extends State<HomePage>
   TabController tabController;
 
   @override
-  initState()  {
+  initState() {
     super.initState();
 
     tabController = TabController(length: 3, vsync: this);
 
-    Prefs.getInt("tabIndex").then((idx){
+    Prefs.getInt("tabIndex").then((idx) {
       tabController.index = idx;
     });
+
 
     tabController.addListener(() async {
       int idx = tabController.index;
 
-      Prefs.setInt("tabIndex",idx);
+      Prefs.setInt("tabIndex", idx);
     });
   }
 
