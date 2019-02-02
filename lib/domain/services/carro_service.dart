@@ -21,6 +21,18 @@ class CarroService {
     return carros;
   }
 
+  static Future<String> getLoremIpsim() async {
+    final url = "https://loripsum.net/api";
+
+    final response = await http.get(url);
+    var body = response.body;
+
+    body = body.replaceAll("<p>", "");
+    body = body.replaceAll("</p>", "");
+
+    return body;
+  }
+
   /*static List<Carro> getCarrosFake() {
     final carros = List.generate(50, (idx) {
       var url =
