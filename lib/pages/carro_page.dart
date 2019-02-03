@@ -15,6 +15,19 @@ class CarroPage extends StatefulWidget {
 class _CarroPageState extends State<CarroPage> {
   get carro => widget.carro;
 
+  bool _isFavorito = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    CarroDB.getInstance().exists(carro).then((b){
+      setState(() {
+        _isFavorito = b;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +97,7 @@ class _CarroPageState extends State<CarroPage> {
           onTap: () { _onClickFavorito(context,carro); },
           child: Icon(
             Icons.favorite,
-            color: Colors.red,
+            color: _isFavorito ? Colors.red : Colors.grey,
             size: 36,
           ),
         ),
@@ -133,8 +146,18 @@ class _CarroPageState extends State<CarroPage> {
   Future _onClickFavorito(BuildContext context, carro) async {
       final db = CarroDB.getInstance();
 
-      int id = await db.saveCarro(carro);
+      final exists = await db.exists(carro);
 
-      print("Carro salvo $id");
+      if(exists) {
+        db.deleteCarro(carro.id);
+      } else {
+        int id = await db.saveCarro(carro);
+
+        print("Carro salvo $id");
+      }
+
+      setState(() {
+        _isFavorito = !exists;
+      });
   }
 }
