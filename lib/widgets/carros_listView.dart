@@ -5,56 +5,14 @@ import 'package:carros/pages/carro_page.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:flutter/material.dart';
 
-class CarrosListView extends StatefulWidget {
-  final String tipo;
+class CarrosListView extends StatelessWidget {
 
-  const CarrosListView(this.tipo) ;
+  final List<Carro> carros;
 
-  @override
-  _CarrosListViewState createState() => _CarrosListViewState();
-}
-
-class _CarrosListViewState extends State<CarrosListView>
-    with AutomaticKeepAliveClientMixin<CarrosListView> {
-
-  @override
-  bool get wantKeepAlive => true;
+  const CarrosListView(this.carros);
 
   @override
   Widget build(BuildContext context) {
-    return _body();
-  }
-
-  _body() {
-
-    Future future = CarroService.getCarros(widget.tipo);
-
-    return Container(
-      padding: EdgeInsets.all(12),
-      child: FutureBuilder(
-        future: future,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return _listView(snapshot.data);
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text("Sem dados",style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 26,
-                  fontStyle: FontStyle.italic
-              ),),
-            );
-          } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),
-    );
-  }
-
-  _listView(List<Carro> carros) {
     return ListView.builder(
       itemCount: carros.length,
       itemBuilder: (ctx, idx) {

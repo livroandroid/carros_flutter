@@ -60,12 +60,14 @@ class CarroDB {
     return id;
   }
 
-  Future<List<Map>> getAllCarros() async {
+  Future<List<Carro>> getCarros() async {
     final dbClient = await db;
 
-    final result = await dbClient.rawQuery('select * from carro');
+    final mapCarros = await dbClient.rawQuery('select * from carro');
 
-    return result.toList();
+    final carros = mapCarros.map<Carro>((json) => Carro.fromJson(json)).toList();
+
+    return carros;
   }
 
   Future<int> getCount() async {
