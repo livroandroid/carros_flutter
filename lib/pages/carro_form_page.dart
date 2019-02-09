@@ -1,4 +1,5 @@
 import 'package:carros/domain/carro.dart';
+import 'package:carros/domain/response.dart';
 import 'package:carros/domain/services/carro_service.dart';
 import 'package:carros/utils/alerts.dart';
 
@@ -224,12 +225,11 @@ class _CarroFormPageState extends State<CarroFormPage> {
       _showProgress = true;
     });
 
-    final ok = await CarroService.salvar(c);
-
-    if(ok){
-      alert(context,"Novo Carro","Carro salvo com sucesso");
+    final response = await CarroService.salvar(c);
+    if(response.isOk()) {
+      alert(context,"Carro salvo", response.msg);
     } else {
-      alert(context,"Erro","Erro ao salvar o carro");
+      alert(context,"Erro", response.msg);
     }
 
     setState(() {

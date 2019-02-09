@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:carros/domain/carro.dart';
+import 'package:carros/domain/response.dart';
 import 'package:http/http.dart' as http;
 
 class CarroService {
@@ -21,20 +22,22 @@ class CarroService {
     return carros;
   }
 
-  static Future<bool> salvar(Carro c) async {
+  static Future<Response> salvar(Carro c) async {
     final url = "http://livrowebservices.com.br/rest/carros";
     print("> post: $url");
 
-    final headers = { "Content-Type": "application/json" };
+    final headers = {"Content-Type":"application/json"};
     final body = json.encode(c.toMap());
-    print("  > $body");
+    print("   > $body");
 
     final response = await http.post(url, headers: headers, body: body);
-    final map = json.decode(response.body);
-    print("  < $map");
 
+    final s = response.body;
+    print("   < $s");
 
-    return true;
+    final r = Response.fromJson(json.decode(s));
+
+    return r;
   }
 
   static Future<String> getLoremIpsim() async {
@@ -48,6 +51,7 @@ class CarroService {
 
     return body;
   }
+
 
   /*static List<Carro> getCarrosFake() {
     final carros = List.generate(50, (idx) {

@@ -40,10 +40,10 @@ class Carro {
 
   Map toMap() {
     Map<String,dynamic> map = {
-      "nome" : nome,
-      "tipo" : tipo,
-      "desc" : desc,
-      "urlFoto" : urlFoto,
+      "nome": nome,
+      "tipo": tipo,
+      "desc": desc,
+      "urlFoto": urlFoto,
     };
     if(id != null) {
       map["id"] = id;
