@@ -1,6 +1,8 @@
 import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/db/CarroDB.dart';
 import 'package:carros/domain/services/carro_service.dart';
+import 'package:carros/pages/carro_form_page.dart';
+import 'package:carros/utils/nav.dart';
 import 'package:flutter/material.dart';
 
 class CarroPage extends StatefulWidget {
@@ -43,16 +45,21 @@ class _CarroPageState extends State<CarroPage> {
             onPressed: () {},
           ),
           PopupMenuButton<String>(
-            onSelected: (string) {},
+            onSelected: (value) {
+              _onClickPopupMenu(value);
+            },
             itemBuilder: (BuildContext context) {
               return [
                 PopupMenuItem(
+                  value: "Editar",
                   child: Text("Editar"),
                 ),
                 PopupMenuItem(
+                  value: "Deletar",
                   child: Text("Deletar"),
                 ),
                 PopupMenuItem(
+                  value: "Share",
                   child: Text("Share"),
                 )
               ];
@@ -68,7 +75,7 @@ class _CarroPageState extends State<CarroPage> {
     return ListView(
       padding: EdgeInsets.all(16),
       children: <Widget>[
-        Image.network(carro.urlFoto),
+        Image.network(carro.urlFoto ?? "http://www.livroandroid.com.br/livro/carros/esportivos/Ferrari_FF.png"),
         _bloco1(),
         _bloco2(),
       ],
@@ -159,5 +166,12 @@ class _CarroPageState extends State<CarroPage> {
       setState(() {
         _isFavorito = !exists;
       });
+  }
+
+  void _onClickPopupMenu(String value) {
+    print("_onClickPopupMenu > $value");
+    if("Editar" == value) {
+      push(context, CarroFormPage(carro:carro));
+    }
   }
 }

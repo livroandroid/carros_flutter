@@ -1,10 +1,10 @@
 import 'package:carros/domain/carro.dart';
+import 'package:carros/pages/carro_form_page.dart';
+import 'package:carros/utils/nav.dart';
 import 'package:carros/utils/prefs.dart';
-import 'package:carros/widgets/carros_listView.dart';
 import 'package:carros/widgets/carros_page.dart';
 import 'package:carros/widgets/favoritos_page.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,7 +13,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin<HomePage> {
-
   TabController tabController;
 
   @override
@@ -25,7 +24,6 @@ class _HomePageState extends State<HomePage>
     Prefs.getInt("tabIndex").then((idx) {
       tabController.index = idx;
     });
-
 
     tabController.addListener(() async {
       int idx = tabController.index;
@@ -69,6 +67,12 @@ class _HomePageState extends State<HomePage>
           CarrosPage(TipoCarro.luxo),
           FavoritosPage(),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          push(context, CarroFormPage());
+        },
       ),
     );
   }

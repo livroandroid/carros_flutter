@@ -21,6 +21,22 @@ class CarroService {
     return carros;
   }
 
+  static Future<bool> salvar(Carro c) async {
+    final url = "http://livrowebservices.com.br/rest/carros";
+    print("> post: $url");
+
+    final headers = { "Content-Type": "application/json" };
+    final body = json.encode(c.toMap());
+    print("  > $body");
+
+    final response = await http.post(url, headers: headers, body: body);
+    final map = json.decode(response.body);
+    print("  < $map");
+
+
+    return true;
+  }
+
   static Future<String> getLoremIpsim() async {
     final url = "https://loripsum.net/api";
 
