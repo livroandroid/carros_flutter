@@ -27,3 +27,8 @@ Manual de como usar as branches app dos carros.
     - Shared Preferences
     - Arquivos
     - Banco de Dados - SQLite
+
+* 05_Cadastro
+
+    - Formulário para cadastrar um carro
+    - POST no servidor com JSON do carro
