@@ -2,6 +2,7 @@ import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/db/CarroDB.dart';
 import 'package:carros/domain/services/carro_service.dart';
 import 'package:carros/pages/carro_form_page.dart';
+import 'package:carros/utils/alerts.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:flutter/material.dart';
 
@@ -172,6 +173,21 @@ class _CarroPageState extends State<CarroPage> {
     print("_onClickPopupMenu > $value");
     if("Editar" == value) {
       push(context, CarroFormPage(carro:carro));
+    } else if("Deletar" == value) {
+      deletar();
+    }
+  }
+
+  void deletar() async {
+
+    final response = await CarroService.deletar(carro.id);
+    if(response.isOk()) {
+      pop(context);
+    } else {
+      alert(context,"Erro", response.msg);
     }
   }
 }
+
+
+

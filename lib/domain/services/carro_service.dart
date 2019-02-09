@@ -40,6 +40,20 @@ class CarroService {
     return r;
   }
 
+  static Future<Response> deletar(id) async {
+    final url = "http://livrowebservices.com.br/rest/carros/$id";
+    print("> delete: $url");
+
+    final response = await http.delete(url);
+
+    final s = response.body;
+    print("   < $s");
+
+    final r = Response.fromJson(json.decode(s));
+
+    return r;
+  }
+
   static Future<String> getLoremIpsim() async {
     final url = "https://loripsum.net/api";
 
