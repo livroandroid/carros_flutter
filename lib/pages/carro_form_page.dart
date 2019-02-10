@@ -228,10 +228,7 @@ class _CarroFormPageState extends State<CarroFormPage> {
 
     final response = await CarroService.salvar(c);
     if (response.isOk()) {
-      alert(context, "Carro salvo", response.msg, callback: () {
-        pop(context);
-      },);
-
+      alert(context, "Carro salvo", response.msg, callback: () => pop(context));
     } else {
       alert(context, "Erro", response.msg);
     }
