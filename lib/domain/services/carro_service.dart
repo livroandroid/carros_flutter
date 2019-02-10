@@ -9,7 +9,7 @@ class CarroService {
   static Future<List<Carro>> getCarros(String tipo) async {
 
     final url = "http://livrowebservices.com.br/rest/carros/tipo/$tipo";
-//    print("> get: $url");
+    print("> get: $url");
 
     final response = await http.get(url);
 

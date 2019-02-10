@@ -2,6 +2,7 @@ import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/response.dart';
 import 'package:carros/domain/services/carro_service.dart';
 import 'package:carros/utils/alerts.dart';
+import 'package:carros/utils/nav.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -226,10 +227,13 @@ class _CarroFormPageState extends State<CarroFormPage> {
     });
 
     final response = await CarroService.salvar(c);
-    if(response.isOk()) {
-      alert(context,"Carro salvo", response.msg);
+    if (response.isOk()) {
+      alert(context, "Carro salvo", response.msg, callback: () {
+        pop(context);
+      },);
+
     } else {
-      alert(context,"Erro", response.msg);
+      alert(context, "Erro", response.msg);
     }
 
     setState(() {
