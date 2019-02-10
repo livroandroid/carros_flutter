@@ -32,3 +32,11 @@ Manual de como usar as branches app dos carros.
 
     - Formulário para cadastrar um carro
     - POST no servidor com JSON do carro
+    - Share
+    - Alerta com opções e Bottom Sheet
+
+* 06_Camera
+
+    - Tirar fotos
+    - Enviar foto para o servidor
+    - Salvar foto do carro
