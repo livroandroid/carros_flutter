@@ -1,9 +1,9 @@
 
 import 'package:carros/domain/carro.dart';
-import 'package:carros/domain/services/carro_service.dart';
 import 'package:carros/pages/carro_page.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 class CarrosListView extends StatelessWidget {
 
@@ -23,6 +23,9 @@ class CarrosListView extends StatelessWidget {
           child: InkWell(
             onTap: () {
               _onClickCarro(context, c);
+            },
+            onLongPress: () {
+              _onLongClickCarro(context, c);
             },
             child: Card(
               child: Padding(
@@ -64,7 +67,7 @@ class CarrosListView extends StatelessWidget {
                           FlatButton(
                             child: const Text('SHARE'),
                             onPressed: () {
-                              /* ... */
+                              _onClickShare(context, c);
                             },
                           ),
                         ],
@@ -80,7 +83,45 @@ class CarrosListView extends StatelessWidget {
     );
   }
 
-  void _onClickCarro(BuildContext context, Carro c) {
-    push(context, CarroPage(c));
+  void _onClickCarro(BuildContext context, Carro carro) {
+    push(context, CarroPage(carro));
+  }
+
+  void _onLongClickCarro(BuildContext context, Carro c) {
+    showModalBottomSheet(context: context,builder: (context){
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Text(c.nome,style: TextStyle(
+              fontSize: 22,fontWeight: FontWeight.bold,
+            ),),
+          ),
+          ListTile(
+            title: Text("Detalhes"),
+            leading: Icon(Icons.directions_car),
+            onTap: () {
+              pop(context);
+              _onClickCarro(context, c);
+            },
+          ),
+          ListTile(
+            title: Text("Share"),
+            leading: Icon(Icons.share),
+            onTap: () {
+              pop(context);
+              _onClickShare(context, c);
+            },
+          )
+        ],
+      );
+    });
+  }
+
+  void _onClickShare(BuildContext context, Carro c) {
+    print("Share ${c.nome}");
+
+    Share.share(c.urlFoto);
   }
 }
