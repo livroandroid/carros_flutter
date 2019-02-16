@@ -36,6 +36,7 @@ class CarrosListView extends StatelessWidget {
                     Center(
                       child: Image.network(
                         c.urlFoto ?? "http://www.livroandroid.com.br/livro/carros/esportivos/Ferrari_FF.png",
+                        height: 150,
                       ),
                     ),
                     Text(

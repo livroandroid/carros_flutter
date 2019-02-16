@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/response.dart';
 import 'package:http/http.dart' as http;
+import 'package:path/path.dart' as path;
 
 class CarroService {
   static Future<List<Carro>> getCarros(String tipo) async {
@@ -22,7 +24,12 @@ class CarroService {
     return carros;
   }
 
-  static Future<Response> salvar(Carro c) async {
+  static Future<Response> salvar(Carro c, File file) async {
+    if(file != null) {
+      final fotoResponse = await upload(file);
+      c.urlFoto = fotoResponse.url;
+    }
+
     final url = "http://livrowebservices.com.br/rest/carros";
     print("> post: $url");
 
@@ -36,6 +43,28 @@ class CarroService {
     print("   < $s");
 
     final r = Response.fromJson(json.decode(s));
+
+    return r;
+  }
+
+  static Future<Response> upload(File file) async {
+    final url = "http://livrowebservices.com.br/rest/carros/postFotoBase64";
+
+    List<int> imageBytes = file.readAsBytesSync();
+    String base64Image = base64Encode(imageBytes);
+
+    String fileName = path.basename(file.path);
+
+    var body = {"fileName": fileName, "base64": base64Image};
+    print("http.upload >> " + body.toString());
+
+    final response = await http.post(url, body: body);
+
+    print("http.upload << " + response.body);
+
+    Map<String, dynamic> map = json.decode(response.body);
+
+    var r = Response.fromJson(map);
 
     return r;
   }

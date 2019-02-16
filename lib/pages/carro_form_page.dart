@@ -249,7 +249,7 @@ class _CarroFormPageState extends State<CarroFormPage> {
       _showProgress = true;
     });
 
-    final response = await CarroService.salvar(c);
+    final response = await CarroService.salvar(c, fileCamera);
     if (response.isOk()) {
       alert(context, "Carro salvo", response.msg, callback: () => pop(context));
     } else {
