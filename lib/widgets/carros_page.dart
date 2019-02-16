@@ -27,6 +27,7 @@ class _CarrosPageState extends State<CarrosPage>
   }
 
   _body() {
+    print("build carros ${widget.tipo}");
 
     // Web Service
     Future<List<Carro>> future = CarroService.getCarros(widget.tipo);
