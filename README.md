@@ -40,3 +40,7 @@ Manual de como usar as branches app dos carros.
     - Tirar fotos
     - Enviar foto para o servidor
     - Salvar foto do carro
+
+* 07_Streams
+
+    - Refactor do projeto para utilizar Streams e o padrão Bloc
