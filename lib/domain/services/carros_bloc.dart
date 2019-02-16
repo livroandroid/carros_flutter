@@ -15,6 +15,8 @@ class CarrosBloc {
     Future<List<Carro>> future = CarroService.getCarros(tipo);
     future.then((carros){
       _controller.sink.add(carros);
+    }).catchError((error){
+      _controller.addError(error);
     });
   }
 
