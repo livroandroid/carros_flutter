@@ -28,6 +28,7 @@ dev_dependencies:
   shared_preferences: ^0.5.0
   sqflite: any
   share: ^0.6.0+1
+  image_picker: ^0.5.0+3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
