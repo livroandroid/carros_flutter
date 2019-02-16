@@ -36,8 +36,6 @@ class _CarroPageState extends State<CarroPage> {
   @override
   Widget build(BuildContext context) {
 
-    print("build ${carro.nome}");
-
     return Scaffold(
       appBar: AppBar(
         title: Text(carro.nome),

@@ -36,7 +36,6 @@ class _CarrosPageState extends State<CarrosPage>
   }
 
   _body() {
-    print("build carros ${widget.tipo}");
 
     _bloc.fetch(widget.tipo);
 
