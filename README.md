@@ -44,3 +44,7 @@ Manual de como usar as branches app dos carros.
 * 07_Streams
 
     - Refactor do projeto para utilizar Streams e o padrão Bloc
+
+* 08_Erros
+
+    - Tratamento de erros, try/catch e como utilizar stream.error
