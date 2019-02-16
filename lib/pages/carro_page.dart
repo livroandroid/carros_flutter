@@ -25,9 +25,11 @@ class _CarroPageState extends State<CarroPage> {
     super.initState();
 
     CarroDB.getInstance().exists(carro).then((b){
-      setState(() {
-        _isFavorito = b;
-      });
+      if(b) {
+        setState(() {
+          _isFavorito = b;
+        });
+      }
     });
   }
 
