@@ -37,8 +37,6 @@ class _CarrosPageState extends State<CarrosPage>
 
   _body() {
 
-    _bloc.fetch(widget.tipo);
-
     return Container(
       padding: EdgeInsets.all(12),
       child: StreamBuilder(
@@ -78,7 +76,6 @@ class _CarrosPageState extends State<CarrosPage>
   void dispose() {
     super.dispose();
 
-    print("close ${widget.tipo}!");
     _bloc.close();
   }
 }
