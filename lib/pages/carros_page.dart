@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:carros/domain/carro.dart';
-import 'package:carros/domain/services/carro_service.dart';
 import 'package:carros/domain/services/carros_bloc.dart';
 import 'package:carros/widgets/carros_listView.dart';
 import 'package:flutter/material.dart';
@@ -32,11 +31,6 @@ class _CarrosPageState extends State<CarrosPage>
 
   @override
   Widget build(BuildContext context) {
-    return _body();
-  }
-
-  _body() {
-
     return Container(
       padding: EdgeInsets.all(12),
       child: StreamBuilder(

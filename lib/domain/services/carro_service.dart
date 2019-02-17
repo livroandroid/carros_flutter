@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:connectivity/connectivity.dart';
 import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/response.dart';
 import 'package:http/http.dart' as http;
@@ -9,13 +9,16 @@ import 'package:path/path.dart' as path;
 
 class CarroService {
   static Future<List<Carro>> getCarros(String tipo) async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    print(connectivityResult);
+    if (connectivityResult == ConnectivityResult.none) {
+      throw Exception("Internet indisponível.");
+    }
 
     final url = "http://livrowebservices.com.br/rest/carros/tipo/$tipo";
     print("> get: $url");
 
     final response = await http.get(url);
-
-//    print("< : ${response.body}");
 
     final mapCarros = json.decode(response.body).cast<Map<String, dynamic>>();
 

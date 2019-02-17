@@ -48,3 +48,7 @@ Manual de como usar as branches app dos carros.
 * 08_Erros
 
     - Tratamento de erros, try/catch e como utilizar stream.error
+    - login try/catch
+    - verificar se existe internet
+    - future lista carros
+    - refresh

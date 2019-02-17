@@ -3,9 +3,17 @@ import 'dart:io';
 
 import 'package:carros/domain/response.dart';
 import 'package:http/http.dart' as http;
+import 'package:connectivity/connectivity.dart';
 
 class LoginService {
   static Future<Response> login(String login, String senha) async {
+
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    print(connectivityResult);
+    if (connectivityResult == ConnectivityResult.none) {
+      return Response(false, "Internet indisponível.");
+    }
+
     try {
       var url = "http://livrowebservices.com.br/rest/login";
 
