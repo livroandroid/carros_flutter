@@ -12,7 +12,7 @@ class CarroService {
     var connectivityResult = await (Connectivity().checkConnectivity());
     print(connectivityResult);
     if (connectivityResult == ConnectivityResult.none) {
-      throw Exception("Internet indisponível.");
+      throw SocketException("Internet indisponível.");
     }
 
     final url = "http://livrowebservices.com.br/rest/carros/tipo/$tipo";
