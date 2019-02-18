@@ -1,21 +1,19 @@
-
 import 'dart:async';
 
 import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/services/carro_service.dart';
 
 class CarrosBloc {
-
   final _controller = StreamController();
 
   get stream => _controller.stream;
 
-  fetch(String tipo) {
+  Future fetch(String tipo) {
     // Web Service
-    Future<List<Carro>> future = CarroService.getCarros(tipo);
-    future.then((carros){
+    return CarroService.getCarros(tipo)
+        .then((carros) {
       _controller.sink.add(carros);
-    }).catchError((error){
+    }).catchError((error) {
       _controller.addError(error);
     });
   }
