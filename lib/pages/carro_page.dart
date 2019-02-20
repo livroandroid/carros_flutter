@@ -5,6 +5,7 @@ import 'package:carros/pages/carro_form_page.dart';
 import 'package:carros/utils/alerts.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CarroPage extends StatefulWidget {
   final Carro carro;
@@ -46,7 +47,7 @@ class _CarroPageState extends State<CarroPage> {
           ),
           IconButton(
             icon: Icon(Icons.videocam),
-            onPressed: () {},
+            onPressed: () { _onClickVideo(context); },
           ),
           PopupMenuButton<String>(
             onSelected: (value) {
@@ -188,6 +189,14 @@ class _CarroPageState extends State<CarroPage> {
       pop(context);
     } else {
       alert(context,"Erro", response.msg);
+    }
+  }
+
+  void _onClickVideo(context) {
+    if(carro.urlVideo != null && carro.urlVideo.isNotEmpty) {
+      launch(carro.urlVideo);
+    } else {
+      alert(context, "Erro", "Este carro não possui nenhum vídeo");
     }
   }
 }

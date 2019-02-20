@@ -44,6 +44,9 @@ class Carro {
       "tipo": tipo,
       "desc": desc,
       "urlFoto": urlFoto,
+      "urlVideo": urlVideo,
+      "latitude": latitude,
+      "longitude": longitude,
     };
     if(id != null) {
       map["id"] = id;

@@ -10323,6 +10323,7 @@ share
 
 --------------------------------------------------------------------------------
 shared_preferences
+url_launcher
 
 // Copyright 2017 The Chromium Authors. All rights reserved.
 //

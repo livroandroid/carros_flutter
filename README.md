@@ -50,5 +50,9 @@ Manual de como usar as branches app dos carros.
     - Tratamento de erros, try/catch e como utilizar stream.error
     - login try/catch
     - verificar se existe internet
-    - future lista carros
-    - refresh
+    - RefreshIndicator
+
+* 09_Video
+
+    - Mostrar o vídeo da URL do carro.
+    - Como usar o plugin url_launcher
