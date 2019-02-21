@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:carros/domain/response.dart';
+import 'package:carros/domain/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:connectivity/connectivity.dart';
 
@@ -25,6 +26,9 @@ class LoginService {
       print(s);
 
       final r = Response.fromJson(json.decode(s));
+
+      final user = User("Ricardo Flutter",login,"rlecheta@flutter.com");
+      user.save();
 
       return r;
     } catch (error) {
