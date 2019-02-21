@@ -68,9 +68,16 @@ class DrawerList extends StatelessWidget {
             ),
             ListTile(
               onTap: () {
-                print("Sobre");
+                print("Ajuda");
               },
-              title: Text("Sobre"),
+              title: Text("Visite o site"),
+              leading: Icon(Icons.web),
+            ),
+            ListTile(
+              onTap: () {
+                print("Ajuda");
+              },
+              title: Text("Ajuda"),
               leading: Icon(Icons.help),
             ),
             ListTile(

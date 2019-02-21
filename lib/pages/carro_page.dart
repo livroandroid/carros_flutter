@@ -203,9 +203,9 @@ class _CarroPageState extends State<CarroPage> {
 
   void _onClickVideo(context) {
     if(carro.urlVideo != null && carro.urlVideo.isNotEmpty) {
-      //launch(carro.urlVideo);
+      launch(carro.urlVideo);
 
-      push(context, VideoPage(carro));
+      //push(context, VideoPage(carro));
     } else {
       alert(context, "Erro", "Este carro não possui nenhum vídeo");
     }
