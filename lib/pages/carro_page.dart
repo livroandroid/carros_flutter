@@ -2,6 +2,7 @@ import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/db/CarroDB.dart';
 import 'package:carros/domain/services/carro_service.dart';
 import 'package:carros/pages/carro_form_page.dart';
+import 'package:carros/pages/map_page.dart';
 import 'package:carros/pages/video_page.dart';
 import 'package:carros/utils/alerts.dart';
 import 'package:carros/utils/nav.dart';
@@ -18,7 +19,7 @@ class CarroPage extends StatefulWidget {
 }
 
 class _CarroPageState extends State<CarroPage> {
-  get carro => widget.carro;
+  Carro get carro => widget.carro;
 
   bool _isFavorito = false;
 
@@ -44,7 +45,9 @@ class _CarroPageState extends State<CarroPage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.place),
-            onPressed: () {},
+            onPressed: () {
+              _onClickMapa(context);
+            },
           ),
           IconButton(
             icon: Icon(Icons.videocam),
@@ -200,6 +203,15 @@ class _CarroPageState extends State<CarroPage> {
       push(context, VideoPage(carro));
     } else {
       alert(context, "Erro", "Este carro não possui nenhum vídeo");
+    }
+  }
+
+  void _onClickMapa(context) {
+    if(carro.latitude?.isNotEmpty && carro.longitude?.isNotEmpty) {
+
+      push(context, MapPage(carro));
+    } else {
+      alert(context, "Erro", "Este carro não possui Lat/Lng da fábrica.");
     }
   }
 }

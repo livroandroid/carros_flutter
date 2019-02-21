@@ -56,3 +56,7 @@ Manual de como usar as branches app dos carros.
 
     - Mostrar o vídeo da URL do carro.
     - Como usar o plugin url_launcher
+
+* 10_Video
+
+    - Mostrar mapa com a lat/lng que está no cadastro do carro.
