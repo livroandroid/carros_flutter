@@ -1,4 +1,5 @@
 import 'package:carros/domain/carro.dart';
+import 'package:carros/drawer_list.dart';
 import 'package:carros/pages/carro_form_page.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:carros/utils/prefs.dart';
@@ -74,6 +75,7 @@ class _HomePageState extends State<HomePage>
           push(context, CarroFormPage());
         },
       ),
+      drawer: DrawerList(),
     );
   }
 }

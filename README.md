@@ -60,3 +60,7 @@ Manual de como usar as branches app dos carros.
 * 10_Video
 
     - Mostrar mapa com a lat/lng que está no cadastro do carro.
+
+* 11_Drawer
+
+    - Drawer
