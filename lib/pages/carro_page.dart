@@ -19,6 +19,8 @@ class CarroPage extends StatefulWidget {
 }
 
 class _CarroPageState extends State<CarroPage> {
+  var loremText;
+
   Carro get carro => widget.carro;
 
   bool _isFavorito = false;
@@ -145,10 +147,13 @@ class _CarroPageState extends State<CarroPage> {
             height: 10,
           ),
           FutureBuilder<String>(
-            future: CarroService.getLoremIpsim(),
+            future: Future(() => loremText) ?? CarroService.getLoremIpsim(),
             builder: (context, snapshot) {
+              if(snapshot.hasData) {
+                loremText = snapshot.data;
+              }
               return snapshot.hasData
-                  ? Text(snapshot.data)
+                  ? Text(loremText)
                   : Center(
                       child: CircularProgressIndicator(),
                     );
