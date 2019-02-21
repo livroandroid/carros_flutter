@@ -147,7 +147,7 @@ class _CarroPageState extends State<CarroPage> {
             height: 10,
           ),
           FutureBuilder<String>(
-            future: Future(() => loremText) ?? CarroService.getLoremIpsim(),
+            future: loremText != null ? Future(() => loremText) : CarroService.getLoremIpsim(),
             builder: (context, snapshot) {
               if(snapshot.hasData) {
                 loremText = snapshot.data;
@@ -212,7 +212,7 @@ class _CarroPageState extends State<CarroPage> {
   }
 
   void _onClickMapa(context) {
-    if(carro.latitude?.isNotEmpty && carro.longitude?.isNotEmpty) {
+    if(carro.latitude != null && carro.longitude != null) {
 
       push(context, MapPage(carro));
     } else {
