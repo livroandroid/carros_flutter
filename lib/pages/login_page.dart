@@ -58,41 +58,63 @@ class _LoginPageState extends State<LoginPage> {
             controller: _tLogin,
             validator: _validateLogin,
             keyboardType: TextInputType.text,
-            style: TextStyle(color: Colors.blue, fontSize: 25),
+            style: TextStyle(
+              color: Colors.blue,
+              fontSize: 22,
+            ),
             decoration: InputDecoration(
-                labelText: "Login",
-                labelStyle: TextStyle(color: Colors.black, fontSize: 25),
-                hintText: "Digite o seu login",
-                hintStyle: TextStyle(color: Colors.black, fontSize: 18)),
+              labelText: "Login",
+              labelStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 22,
+              ),
+              hintText: "Digite o seu login",
+              hintStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+              ),
+            ),
           ),
           TextFormField(
-              controller: _tSenha,
-              validator: _validateSenha,
-              obscureText: true,
-              keyboardType: TextInputType.number,
-              style: TextStyle(color: Colors.blue, fontSize: 25),
-              decoration: InputDecoration(
-                  labelText: "Senha",
-                  labelStyle: TextStyle(color: Colors.black, fontSize: 25),
-                  hintText: "Digite a sua Senha",
-                  hintStyle: TextStyle(color: Colors.black, fontSize: 18))),
+            controller: _tSenha,
+            validator: _validateSenha,
+            obscureText: true,
+            keyboardType: TextInputType.number,
+            style: TextStyle(
+              color: Colors.blue,
+              fontSize: 22,
+            ),
+            decoration: InputDecoration(
+              labelText: "Senha",
+              labelStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 22,
+              ),
+              hintText: "Digite a sua Senha",
+              hintStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+              ),
+            ),
+          ),
           Container(
-            height: 50,
+            height: 46,
             margin: EdgeInsets.only(top: 20),
             child: RaisedButton(
-                color: Colors.blue,
-                child: _progress
-                    ? CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation(Colors.white),
-                      )
-                    : Text(
-                        "Login",
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      ),
-                onPressed: () {
-                  _onClickLogin(context);
-                }),
-          )
+              color: Colors.blue,
+              child: _progress
+                  ? CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation(Colors.white),
+                    )
+                  : Text(
+                      "Login",
+                      style: TextStyle(color: Colors.white, fontSize: 22),
+                    ),
+              onPressed: () {
+                _onClickLogin(context);
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -115,9 +137,9 @@ class _LoginPageState extends State<LoginPage> {
     final response = await LoginService.login(login, senha);
 
     if (response.isOk()) {
-        pushReplacement(context, HomePage());
+      pushReplacement(context, HomePage());
     } else {
-        alert(context, "Erro", response.msg);
+      alert(context, "Erro", response.msg);
     }
 
     setState(() {

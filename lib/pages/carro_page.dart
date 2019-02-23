@@ -155,8 +155,8 @@ class _CarroPageState extends State<CarroPage> {
               return snapshot.hasData
                   ? Text(loremText)
                   : Center(
-                      child: CircularProgressIndicator(),
-                    );
+                child: CircularProgressIndicator(),
+              );
             },
           )
         ],
@@ -165,21 +165,21 @@ class _CarroPageState extends State<CarroPage> {
   }
 
   Future _onClickFavorito(BuildContext context, carro) async {
-      final db = CarroDB.getInstance();
+    final db = CarroDB.getInstance();
 
-      final exists = await db.exists(carro);
+    final exists = await db.exists(carro);
 
-      if(exists) {
-        db.deleteCarro(carro.id);
-      } else {
-        int id = await db.saveCarro(carro);
+    if(exists) {
+      db.deleteCarro(carro.id);
+    } else {
+      int id = await db.saveCarro(carro);
 
-        print("Carro salvo $id");
-      }
+      print("Carro salvo $id");
+    }
 
-      setState(() {
-        _isFavorito = !exists;
-      });
+    setState(() {
+      _isFavorito = !exists;
+    });
   }
 
   void _onClickPopupMenu(String value) {

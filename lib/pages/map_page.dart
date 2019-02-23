@@ -25,7 +25,7 @@ class _MapPageState extends State<MapPage> {
       body: Container(
         child: GoogleMap(
           initialCameraPosition: CameraPosition(
-            target: carro.latlng,
+            target: carro.latlng(),
             zoom: 12,
           ),
           mapType: MapType.normal,
@@ -40,8 +40,8 @@ class _MapPageState extends State<MapPage> {
     setState(() {
       mapController = controller;
       mapController.addMarker(MarkerOptions(
-        position: carro.latlng,
-        infoWindowText: InfoWindowText("Ferrari FF", "Fábrica da Ferrari")
+          position: carro.latlng(),
+          infoWindowText: InfoWindowText("Ferrari FF", "Fábrica da Ferrari")
       ));
     });
   }
