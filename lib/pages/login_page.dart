@@ -3,6 +3,8 @@ import 'package:carros/pages/home_page.dart';
 import 'package:carros/utils/alerts.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -16,6 +18,22 @@ class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   var _progress = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    RemoteConfig.instance.then((remoteConfig){
+      remoteConfig.fetch(expiration: const Duration(hours: 1));
+      remoteConfig.activateFetched();
+
+      final msg = remoteConfig.getString('ricardo');
+
+      print('>>> $msg');
+    });
+
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,10 +126,22 @@ class _LoginPageState extends State<LoginPage> {
                     )
                   : Text(
                       "Login",
-                      style: TextStyle(color: Colors.white, fontSize: 22),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22,
+                      ),
                     ),
               onPressed: () {
                 _onClickLogin(context);
+              },
+            ),
+          ),
+          Container(
+            height: 46,
+            margin: EdgeInsets.only(top: 20),
+            child: GoogleSignInButton(
+              onPressed: () {
+                _onClickLoginGoogle(context);
               },
             ),
           ),
@@ -120,7 +150,11 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _onClickLogin(BuildContext context) async {
+  void _onClickLoginGoogle(context) async {
+    print("Google!");
+  }
+
+  void _onClickLogin(context) async {
     final login = _tLogin.text;
     final senha = _tSenha.text;
 

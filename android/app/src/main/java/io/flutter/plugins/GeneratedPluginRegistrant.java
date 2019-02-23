@@ -2,6 +2,8 @@ package io.flutter.plugins;
 
 import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugins.connectivity.ConnectivityPlugin;
+import io.flutter.plugins.firebase.core.FirebaseCorePlugin;
+import io.flutter.plugins.firebase.firebaseremoteconfig.FirebaseRemoteConfigPlugin;
 import io.flutter.plugins.googlemaps.GoogleMapsPlugin;
 import io.flutter.plugins.imagepicker.ImagePickerPlugin;
 import io.flutter.plugins.share.SharePlugin;
@@ -19,6 +21,8 @@ public final class GeneratedPluginRegistrant {
       return;
     }
     ConnectivityPlugin.registerWith(registry.registrarFor("io.flutter.plugins.connectivity.ConnectivityPlugin"));
+    FirebaseCorePlugin.registerWith(registry.registrarFor("io.flutter.plugins.firebase.core.FirebaseCorePlugin"));
+    FirebaseRemoteConfigPlugin.registerWith(registry.registrarFor("io.flutter.plugins.firebase.firebaseremoteconfig.FirebaseRemoteConfigPlugin"));
     GoogleMapsPlugin.registerWith(registry.registrarFor("io.flutter.plugins.googlemaps.GoogleMapsPlugin"));
     ImagePickerPlugin.registerWith(registry.registrarFor("io.flutter.plugins.imagepicker.ImagePickerPlugin"));
     SharePlugin.registerWith(registry.registrarFor("io.flutter.plugins.share.SharePlugin"));

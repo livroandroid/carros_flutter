@@ -4,6 +4,8 @@
 
 #import "GeneratedPluginRegistrant.h"
 #import <connectivity/ConnectivityPlugin.h>
+#import <firebase_core/FirebaseCorePlugin.h>
+#import <firebase_remote_config/FirebaseRemoteConfigPlugin.h>
 #import <google_maps_flutter/GoogleMapsPlugin.h>
 #import <image_picker/ImagePickerPlugin.h>
 #import <share/SharePlugin.h>
@@ -16,6 +18,8 @@
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [FLTConnectivityPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTConnectivityPlugin"]];
+  [FLTFirebaseCorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseCorePlugin"]];
+  [FirebaseRemoteConfigPlugin registerWithRegistrar:[registry registrarForPlugin:@"FirebaseRemoteConfigPlugin"]];
   [FLTGoogleMapsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTGoogleMapsPlugin"]];
   [FLTImagePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTImagePickerPlugin"]];
   [FLTSharePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharePlugin"]];
