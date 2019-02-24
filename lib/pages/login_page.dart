@@ -24,15 +24,19 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
 
     RemoteConfig.instance.then((remoteConfig){
-      remoteConfig.fetch(expiration: const Duration(hours: 1));
-      remoteConfig.activateFetched();
+      remoteConfig.setConfigSettings(RemoteConfigSettings(debugMode: true));
 
-      final msg = remoteConfig.getString('ricardo');
+      try {
+        remoteConfig.fetch(expiration: const Duration(minutes: 1));
+        remoteConfig.activateFetched();
+      } catch(error) {
+        print("Remote Config: $error");
+      }
 
-      print('>>> $msg');
+      final mensagem = remoteConfig.getString("mensagem");
+
+      print('Mensagem: $mensagem');
     });
-
-
   }
 
   @override
