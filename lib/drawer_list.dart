@@ -2,6 +2,7 @@ import 'package:carros/domain/user.dart';
 import 'package:carros/firebase/firebase_service.dart';
 import 'package:carros/pages/login_page.dart';
 import 'package:carros/utils/nav.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class DrawerList extends StatelessWidget {
@@ -14,18 +15,18 @@ class DrawerList extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: FutureBuilder<User>(
-                future: User.get(),
+              accountName: FutureBuilder<FirebaseUser>(
+                future: FirebaseAuth.instance.currentUser(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     final user = snapshot.data;
-                    return Text(user.nome);
+                    return Text(user.displayName);
                   }
                   return Text("");
                 },
               ),
-              accountEmail: FutureBuilder<User>(
-                future: User.get(),
+              accountEmail: FutureBuilder<FirebaseUser>(
+                future: FirebaseAuth.instance.currentUser(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     final user = snapshot.data;
@@ -34,9 +35,18 @@ class DrawerList extends StatelessWidget {
                   return Text("");
                 },
               ),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage(
-                    "https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png"),
+              currentAccountPicture: FutureBuilder<FirebaseUser>(
+                future: FirebaseAuth.instance.currentUser(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    final user = snapshot.data;
+                    return CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          user.photoUrl),
+                    );
+                  }
+                  return Text("");
+                },
               ),
             ),
             ListTile(
@@ -97,7 +107,8 @@ class DrawerList extends StatelessWidget {
   Future _logout(BuildContext context) async {
     print("Logout Firebase");
     final service = FirebaseService();
-    await service.logout();
+    service.logout();
+
     print("Logout");
     pop(context);
     pushReplacement(context, LoginPage());

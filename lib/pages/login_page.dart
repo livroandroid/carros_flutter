@@ -21,9 +21,22 @@ class _LoginPageState extends State<LoginPage> {
 
   var _progress = false;
 
-  @override
+  FirebaseUser fUser;
+  var showForm = false;
+
   void initState() {
     super.initState();
+
+    FirebaseAuth.instance.currentUser().then((fUser){
+      setState(() {
+        this.fUser = fUser;
+        if(fUser != null) {
+          pushReplacement(context, HomePage());
+        } else {
+          showForm = true;
+        }
+      });
+    });
 
     RemoteConfig.instance.then((remoteConfig){
       remoteConfig.setConfigSettings(RemoteConfigSettings(debugMode: true));
@@ -45,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Carros"),
+        title:  fUser != null ?  Text("Carros ${fUser.displayName}") : Text("Carros"),
       ),
       body: Padding(
         padding: EdgeInsets.all(16),
@@ -74,6 +87,14 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _body(BuildContext context) {
+
+    if(!showForm) {
+      return Container(
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
 
     return Form(
       key: _formKey,
