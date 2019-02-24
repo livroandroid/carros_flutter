@@ -63,4 +63,13 @@ Manual de como usar as branches app dos carros.
 
 * 11_Drawer
 
-    - Drawer
+    - Menu lateral mostrando os dados do usuário logado.
+
+* 12_Firebase_Auth
+
+    - Login com Google e Firebase
+    - Menu lateral com o FirebaseUser
+    - Implementar o login automático no app, caso o usuário esteja logado.
+    - Logout com Firebase
+
+
