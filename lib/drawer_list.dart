@@ -1,6 +1,7 @@
 import 'package:carros/domain/user.dart';
 import 'package:carros/pages/login_page.dart';
 import 'package:carros/utils/nav.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class DrawerList extends StatelessWidget {
@@ -33,10 +34,21 @@ class DrawerList extends StatelessWidget {
                   return Text("");
                 },
               ),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage(
-                    "https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png"),
-              ),
+              currentAccountPicture: FutureBuilder<FirebaseUser>(
+              future: FirebaseAuth.instance.currentUser()
+              ,builder: (context,snapshot) {
+                if(snapshot.hasData) {
+                  final fUser = snapshot.data;
+                  return CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        fUser.photoUrl),
+                  );
+                }
+                return CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      "https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png"),
+                );
+              }),
             ),
             ListTile(
               onTap: () {

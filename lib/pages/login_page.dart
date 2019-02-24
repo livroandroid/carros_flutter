@@ -1,10 +1,13 @@
+import 'package:carros/domain/services/firebase_service.dart';
 import 'package:carros/domain/services/login_service.dart';
+import 'package:carros/domain/user.dart';
 import 'package:carros/pages/home_page.dart';
 import 'package:carros/utils/alerts.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -12,8 +15,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _tLogin = TextEditingController(text: "ricardo");
-  final _tSenha = TextEditingController(text: "123");
+  final _tLogin = TextEditingController(text: "rlecheta3@gmail.com");
+  final _tSenha = TextEditingController(text: "ricardo");
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -24,11 +27,18 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
 
     RemoteConfig.instance.then((remoteConfig){
-      remoteConfig.fetch(expiration: const Duration(hours: 1));
-      remoteConfig.activateFetched();
+      try {
+        remoteConfig.setConfigSettings(RemoteConfigSettings(debugMode: true));
+        remoteConfig.fetch(expiration: const Duration(minutes: 1));
+        remoteConfig.activateFetched();
+      } catch (error) {
+        print("*** Error: $error");
+      }
 
-      final msg = remoteConfig.getString('ricardo');
+      var msg = remoteConfig.getString('welcome');
+      print('>>> $msg');
 
+      msg = remoteConfig.getString('fala');
       print('>>> $msg');
     });
 
@@ -97,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
             controller: _tSenha,
             validator: _validateSenha,
             obscureText: true,
-            keyboardType: TextInputType.number,
+            keyboardType: TextInputType.text,
             style: TextStyle(
               color: Colors.blue,
               fontSize: 22,
@@ -141,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
             margin: EdgeInsets.only(top: 20),
             child: GoogleSignInButton(
               onPressed: () {
-                _onClickLoginGoogle(context);
+                _onClickLoginGoogle2(context);
               },
             ),
           ),
@@ -151,7 +161,46 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _onClickLoginGoogle(context) async {
-    print("Google!");
+    final login = _tLogin.text;
+    final senha = _tSenha.text;
+
+    final FirebaseAuth _fAuth = FirebaseAuth.instance;
+
+    FirebaseUser fUser = await _fAuth.createUserWithEmailAndPassword(email: login, password: senha);
+    print("FUser $fUser");
+
+    final info = UserUpdateInfo();
+    info.displayName = "Ricardo Lecheta Flutter";
+    info.photoUrl = "https://s3-sa-east-1.amazonaws.com/livetouch-temp/livrows/foto.png";
+    fUser.updateProfile(info);
+  }
+
+  void _onClickLoginGoogle2(context) async {
+    final login = _tLogin.text;
+    final senha = _tSenha.text;
+
+    if (!_formKey.currentState.validate()) {
+      return;
+    }
+
+    print("Login: $login, senha: $senha");
+
+    setState(() {
+      _progress = true;
+    });
+
+    final service = FirebaseService();
+    final response = await service.loginGoogle();
+
+    if (response.isOk()) {
+      pushReplacement(context, HomePage());
+    } else {
+      alert(context, "Erro", response.msg);
+    }
+
+    setState(() {
+      _progress = false;
+    });
   }
 
   void _onClickLogin(context) async {
@@ -168,13 +217,23 @@ class _LoginPageState extends State<LoginPage> {
       _progress = true;
     });
 
-    final response = await LoginService.login(login, senha);
+    final FirebaseAuth _fAuth = FirebaseAuth.instance;
 
-    if (response.isOk()) {
-      pushReplacement(context, HomePage());
-    } else {
-      alert(context, "Erro", response.msg);
+    FirebaseUser fUser = await _fAuth.signInWithEmailAndPassword(email: login, password: senha);
+    print("FUser ${fUser.displayName} ");
+
+    if(fUser != null) {
+      final user = User(fUser.displayName,login,fUser.email);
+      user.save();
     }
+
+//    final response = await LoginService.login(login, senha);
+//
+//    if (response.isOk()) {
+      pushReplacement(context, HomePage());
+//    } else {
+//      alert(context, "Erro", response.msg);
+//    }
 
     setState(() {
       _progress = false;
