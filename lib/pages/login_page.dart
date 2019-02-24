@@ -1,7 +1,9 @@
 import 'package:carros/domain/services/login_service.dart';
+import 'package:carros/firebase/firebase_service.dart';
 import 'package:carros/pages/home_page.dart';
 import 'package:carros/utils/alerts.dart';
 import 'package:carros/utils/nav.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -72,6 +74,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _body(BuildContext context) {
+
     return Form(
       key: _formKey,
       child: ListView(
@@ -155,7 +158,16 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _onClickLoginGoogle(context) async {
-    print("Google!");
+    print("Google");
+
+    final service = FirebaseService();
+    final response = await service.loginGoogle();
+
+    if (response.isOk()) {
+      pushReplacement(context, HomePage());
+    } else {
+      alert(context, "Erro", response.msg);
+    }
   }
 
   void _onClickLogin(context) async {

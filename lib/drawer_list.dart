@@ -1,4 +1,5 @@
 import 'package:carros/domain/user.dart';
+import 'package:carros/firebase/firebase_service.dart';
 import 'package:carros/pages/login_page.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:flutter/material.dart';
@@ -93,10 +94,14 @@ class DrawerList extends StatelessWidget {
     );
   }
 
-  void _logout(BuildContext context) {
+  Future _logout(BuildContext context) async {
+    print("Logout Firebase");
+    final service = FirebaseService();
+    await service.logout();
     print("Logout");
     pop(context);
     pushReplacement(context, LoginPage());
     User.clear();
+
   }
 }
