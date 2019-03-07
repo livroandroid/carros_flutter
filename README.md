@@ -76,3 +76,7 @@ Manual de como usar as branches app dos carros.
 
     - Cadastro de usuário o Firebase
     - Aplicativo agora funciona apenas com Firebase (removido o ws de login).
+
+* 13_Firebase_Database
+
+    - Lista de favoritos no realtime database.
