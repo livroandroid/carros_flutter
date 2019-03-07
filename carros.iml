@@ -9,6 +9,12 @@
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/cloud_firestore/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/cloud_firestore/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/cloud_firestore/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/cloud_firestore/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/cloud_firestore/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/cloud_firestore/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/connectivity/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/connectivity/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/connectivity/build" />
