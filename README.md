@@ -84,3 +84,7 @@ Manual de como usar as branches app dos carros.
 * 15_WebView
 
     - Tela de "Visite o site" com WebView.
+
+* 16_Biometria
+
+    - Biometria com o plugin local_auth

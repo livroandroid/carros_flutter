@@ -2,6 +2,7 @@ import 'package:carros/firebase/firebase_service.dart';
 import 'package:carros/pages/cadastro_page.dart';
 import 'package:carros/pages/home_page.dart';
 import 'package:carros/utils/alerts.dart';
+import 'package:carros/utils/finger_print.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -31,7 +32,8 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         this.fUser = fUser;
         if (fUser != null) {
-          pushReplacement(context, HomePage());
+          //pushReplacement(context, HomePage());
+          showForm = true;
         } else {
           showForm = true;
         }
@@ -163,12 +165,27 @@ class _LoginPageState extends State<LoginPage> {
                 _onClickCadastrar(context);
               },
               child: Text(
-                "Cadastre-se",
+                "Cadastre-se!",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.blue,
                   decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
+          ),
+          Opacity(
+            opacity: fUser != null ? 1 : 0,
+            child: Container(
+              height: 46,
+              child: InkWell(
+                onTap: () {
+                  _onClickFingerprint(context);
+                },
+                child: Image.asset(
+                  "assets/images/fingerprint.png",
+                  color: Colors.blue,
                 ),
               ),
             ),
@@ -195,6 +212,13 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     return null;
+  }
+
+  _onClickFingerprint(context) async {
+      final ok = await FingerPrint.verify();
+      if(ok) {
+        pushReplacement(context, HomePage());
+      }
   }
 
   _onClickCadastrar(context) {

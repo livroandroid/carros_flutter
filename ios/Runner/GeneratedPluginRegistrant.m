@@ -11,9 +11,9 @@
 #import <google_maps_flutter/GoogleMapsPlugin.h>
 #import <google_sign_in/GoogleSignInPlugin.h>
 #import <image_picker/ImagePickerPlugin.h>
+#import <local_auth/LocalAuthPlugin.h>
 #import <share/SharePlugin.h>
 #import <shared_preferences/SharedPreferencesPlugin.h>
-#import <sqflite/SqflitePlugin.h>
 #import <url_launcher/UrlLauncherPlugin.h>
 #import <video_player/VideoPlayerPlugin.h>
 #import <webview_flutter/WebViewFlutterPlugin.h>
@@ -29,9 +29,9 @@
   [FLTGoogleMapsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTGoogleMapsPlugin"]];
   [FLTGoogleSignInPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTGoogleSignInPlugin"]];
   [FLTImagePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTImagePickerPlugin"]];
+  [FLTLocalAuthPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTLocalAuthPlugin"]];
   [FLTSharePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharePlugin"]];
   [FLTSharedPreferencesPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharedPreferencesPlugin"]];
-  [SqflitePlugin registerWithRegistrar:[registry registrarForPlugin:@"SqflitePlugin"]];
   [FLTUrlLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTUrlLauncherPlugin"]];
   [FLTVideoPlayerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTVideoPlayerPlugin"]];
   [FLTWebViewFlutterPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTWebViewFlutterPlugin"]];

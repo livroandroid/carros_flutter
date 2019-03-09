@@ -9,9 +9,9 @@ import io.flutter.plugins.firebase.firebaseremoteconfig.FirebaseRemoteConfigPlug
 import io.flutter.plugins.googlemaps.GoogleMapsPlugin;
 import io.flutter.plugins.googlesignin.GoogleSignInPlugin;
 import io.flutter.plugins.imagepicker.ImagePickerPlugin;
+import io.flutter.plugins.localauth.LocalAuthPlugin;
 import io.flutter.plugins.share.SharePlugin;
 import io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin;
-import com.tekartik.sqflite.SqflitePlugin;
 import io.flutter.plugins.urllauncher.UrlLauncherPlugin;
 import io.flutter.plugins.videoplayer.VideoPlayerPlugin;
 import io.flutter.plugins.webviewflutter.WebViewFlutterPlugin;
@@ -32,9 +32,9 @@ public final class GeneratedPluginRegistrant {
     GoogleMapsPlugin.registerWith(registry.registrarFor("io.flutter.plugins.googlemaps.GoogleMapsPlugin"));
     GoogleSignInPlugin.registerWith(registry.registrarFor("io.flutter.plugins.googlesignin.GoogleSignInPlugin"));
     ImagePickerPlugin.registerWith(registry.registrarFor("io.flutter.plugins.imagepicker.ImagePickerPlugin"));
+    LocalAuthPlugin.registerWith(registry.registrarFor("io.flutter.plugins.localauth.LocalAuthPlugin"));
     SharePlugin.registerWith(registry.registrarFor("io.flutter.plugins.share.SharePlugin"));
     SharedPreferencesPlugin.registerWith(registry.registrarFor("io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin"));
-    SqflitePlugin.registerWith(registry.registrarFor("com.tekartik.sqflite.SqflitePlugin"));
     UrlLauncherPlugin.registerWith(registry.registrarFor("io.flutter.plugins.urllauncher.UrlLauncherPlugin"));
     VideoPlayerPlugin.registerWith(registry.registrarFor("io.flutter.plugins.videoplayer.VideoPlayerPlugin"));
     WebViewFlutterPlugin.registerWith(registry.registrarFor("io.flutter.plugins.webviewflutter.WebViewFlutterPlugin"));
