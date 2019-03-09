@@ -3,10 +3,7 @@ import 'package:carros/pages/home_page.dart';
 import 'package:carros/pages/login_page.dart';
 import 'package:carros/utils/alerts.dart';
 import 'package:carros/utils/nav.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 class CadastroPage extends StatefulWidget {
   @override
@@ -14,9 +11,9 @@ class CadastroPage extends StatefulWidget {
 }
 
 class _CadastroPageState extends State<CadastroPage> {
-  final _tNome = TextEditingController();
-  final _tEmail = TextEditingController();
-  final _tSenha = TextEditingController();
+  final _tNome = TextEditingController(text: "Ricardo Lecheta");
+  final _tEmail = TextEditingController(text: "rlecheta@gmail.com");
+  final _tSenha = TextEditingController(text: "123456");
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 

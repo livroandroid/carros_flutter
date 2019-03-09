@@ -1,13 +1,9 @@
 
 import 'package:carros/domain/carro.dart';
-import 'package:carros/domain/db/CarroDB.dart';
-import 'package:carros/domain/services/carro_service.dart';
 import 'package:carros/firebase/favoritos_service.dart';
-import 'package:carros/pages/carro_page.dart';
-import 'package:carros/utils/nav.dart';
 import 'package:carros/widgets/carros_listView.dart';
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class FavoritosPage extends StatefulWidget {
   @override

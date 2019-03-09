@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+<!-- Google Sign-in Section -->
+<key>CFBundleURLTypes</key>
+<array>
+	<dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<!-- TODO Replace this value: -->
+			<!-- Copied from GoogleServices-Info.plist key REVERSED_CLIENT_ID -->
+			<string>com.googleusercontent.apps.1058831262361-nk8e29o8gem4f30or6vr519hbfck7509</string>
+		</array>
+	</dict>
+</array>
+<!-- End of the Google Sign-in Section -->
 	<key>io.flutter.embedded_views_preview</key>
 	<string>YES</string>
 	<key>CFBundleDevelopmentRegion</key>

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/services/carro_service.dart';
 
 class CarrosBloc {

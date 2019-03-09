@@ -1,6 +1,6 @@
 import 'package:carros/domain/carro.dart';
-import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
 class VideoPage extends StatefulWidget {
   final Carro carro;
