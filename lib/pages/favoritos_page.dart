@@ -40,9 +40,7 @@ class _FavoritosPageState extends State<FavoritosPage>
           if (snapshot.hasData) {
 
 //            final List<Carro> carros = snapshot.data;
-            List<Carro> carros = snapshot.data.documents
-                .map((document) => Carro.fromJson(document.data) )
-                .toList();
+            List<Carro> carros = service.toList(snapshot);
 
             return CarrosListView(carros);
           } else if (snapshot.hasError) {

@@ -1,11 +1,18 @@
 
 import 'package:carros/domain/carro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/src/widgets/async.dart';
 
 class FavoritoService {
   getCarros() => _carros.snapshots();
 
   CollectionReference get _carros => Firestore.instance.collection("carros");
+
+  List<Carro> toList(AsyncSnapshot<QuerySnapshot> snapshot) {
+    return snapshot.data.documents
+        .map((document) => Carro.fromJson(document.data) )
+        .toList();
+  }
 
   Future<bool> favoritar(Carro carro) async {
 
@@ -13,12 +20,12 @@ class FavoritoService {
     var documentSnapshot = await document.get();
 
     if (!documentSnapshot.exists) {
-      print("save");
+      print("${carro.nome}, adicionado nos favoritos");
       document.setData(carro.toMap());
 
       return true;
     } else {
-      print("delete");
+      print("${carro.nome}, removido nos favoritos");
       document.delete();
 
       return false;
