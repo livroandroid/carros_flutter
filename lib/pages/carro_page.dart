@@ -1,7 +1,7 @@
 import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/db/CarroDB.dart';
 import 'package:carros/domain/services/carro_service.dart';
-import 'package:carros/firebase/favorito_service.dart';
+import 'package:carros/firebase/favoritos_service.dart';
 import 'package:carros/pages/carro_form_page.dart';
 import 'package:carros/pages/map_page.dart';
 import 'package:carros/utils/alerts.dart';
@@ -29,7 +29,7 @@ class _CarroPageState extends State<CarroPage> {
   void initState() {
     super.initState();
 
-    final service = FavoritoService();
+    final service = FavoritosService();
 
     service.exists(carro).then((b){
       if(b) {
@@ -176,7 +176,7 @@ class _CarroPageState extends State<CarroPage> {
 
   Future _onClickFavorito(context, carro) async {
 
-    final service = FavoritoService();
+    final service = FavoritosService();
     final b = await service.favoritar(carro);
 
     setState(() {

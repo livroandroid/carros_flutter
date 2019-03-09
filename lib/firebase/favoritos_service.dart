@@ -3,7 +3,7 @@ import 'package:carros/domain/carro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/src/widgets/async.dart';
 
-class FavoritoService {
+class FavoritosService {
   getCarros() => _carros.snapshots();
 
   CollectionReference get _carros => Firestore.instance.collection("carros");
