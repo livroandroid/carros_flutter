@@ -1,5 +1,6 @@
 import 'package:carros/firebase/firebase_service.dart';
 import 'package:carros/pages/login_page.dart';
+import 'package:carros/pages/site_page.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +80,7 @@ class DrawerList extends StatelessWidget {
             ),
             ListTile(
               onTap: () {
-                print("Ajuda");
+                _onClickSite(context);
               },
               title: Text("Visite o site"),
               leading: Icon(Icons.web),
@@ -104,7 +105,7 @@ class DrawerList extends StatelessWidget {
     );
   }
 
-  Future _logout(BuildContext context) async {
+  Future _logout(context) async {
     print("Logout Firebase");
     final service = FirebaseService();
     service.logout();
@@ -112,5 +113,10 @@ class DrawerList extends StatelessWidget {
     print("Logout");
     pop(context);
     pushReplacement(context, LoginPage());
+  }
+
+  void _onClickSite(context) {
+    pop(context);
+    push(context, SitePage());
   }
 }
