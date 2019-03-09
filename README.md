@@ -72,11 +72,11 @@ Manual de como usar as branches app dos carros.
     - Implementar o login automático no app, caso o usuário esteja logado.
     - Logout com Firebase
 
-* 12_Firebase_Auth_Parte2
+* 13_Firebase_Auth_Parte2
 
     - Cadastro de usuário o Firebase
     - Aplicativo agora funciona apenas com Firebase (removido o ws de login).
 
-* 13_Firebase_Database
+* 14_Firebase_Database
 
     - Lista de favoritos no realtime database.
