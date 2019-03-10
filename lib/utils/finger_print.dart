@@ -14,18 +14,10 @@ class FingerPrint {
   static Future<bool> verify() async {
     var localAuth = new LocalAuthentication();
 
-    bool didAuthenticate =
+    bool ok =
     await localAuth.authenticateWithBiometrics(
         localizedReason: 'Toque no sensor para autenticar com sua digital.');
 
-    if (didAuthenticate) {
-      print("didAuthenticate");
-
-      return true;
-    } else {
-      print("didAuthenticate");
-    }
-
-    return false;
+    return ok;
   }
 }
