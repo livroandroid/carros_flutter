@@ -8,7 +8,7 @@ class FingerPrint {
     bool b =
     await localAuth.canCheckBiometrics;
 
-    return false;
+    return b;
   }
 
   static Future<bool> verify() async {
