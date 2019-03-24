@@ -7,7 +7,7 @@ class SitePage extends StatefulWidget {
 }
 
 class _SitePageState extends State<SitePage> {
-  var _stackIdx = 1;
+  var _showProgress = true;
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +20,21 @@ class _SitePageState extends State<SitePage> {
   }
 
   _webView() {
-    return IndexedStack(
-      index: _stackIdx,
+    return Stack(
       children: [
         Column(
-          children: < Widget > [
+          children: <Widget>[
             Expanded(
-                child: WebView(
-                  javascriptMode: JavascriptMode.unrestricted,
-                  initialUrl: "https://flutter.dev",
-                  onPageFinished: _onPageFinished,
-                )
+              child: WebView(
+                javascriptMode: JavascriptMode.unrestricted,
+                initialUrl: "https://flutter.dev",
+                onPageFinished: _onPageFinished,
+              ),
             ),
           ],
         ),
-        Container(
-          color: Colors.white,
+        Opacity(
+          opacity: _showProgress ? 1 : 0,
           child: Center(
             child: CircularProgressIndicator(),
           ),
@@ -45,8 +44,9 @@ class _SitePageState extends State<SitePage> {
   }
 
   void _onPageFinished(String value) {
+    print("onPageFinished");
     setState(() {
-      _stackIdx = 0;
+      _showProgress = false;
     });
   }
 }
