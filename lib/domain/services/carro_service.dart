@@ -19,7 +19,8 @@ class CarroService {
     final url = "http://livrowebservices.com.br/rest/carros/tipo/$tipo";
     print("> get: $url");
 
-    final response = await http.get(url);
+    final response = await http.get(url)
+          .timeout(Duration(seconds: 10),onTimeout: _onTimeOut);
 
     final mapCarros = json.decode(response.body).cast<Map<String, dynamic>>();
 
@@ -41,7 +42,8 @@ class CarroService {
     final body = json.encode(c.toMap());
     print("   > $body");
 
-    final response = await http.post(url, headers: headers, body: body);
+    final response = await http.post(url, headers: headers, body: body)
+        .timeout(Duration(seconds: 10),onTimeout: _onTimeOut);
 
     final s = response.body;
     print("   < $s");
@@ -62,7 +64,8 @@ class CarroService {
     var body = {"fileName": fileName, "base64": base64Image};
     print("http.upload >> " + body.toString());
 
-    final response = await http.post(url, body: body);
+    final response = await http.post(url, body: body)
+        .timeout(Duration(seconds: 10),onTimeout: _onTimeOut);
 
     print("http.upload << " + response.body);
 
@@ -77,7 +80,8 @@ class CarroService {
     final url = "http://livrowebservices.com.br/rest/carros/$id";
     print("> delete: $url");
 
-    final response = await http.delete(url);
+    final response = await http.delete(url)
+        .timeout(Duration(seconds: 10),onTimeout: _onTimeOut);
 
     final s = response.body;
     print("   < $s");
@@ -90,7 +94,9 @@ class CarroService {
   static Future<String> getLoremIpsim() async {
     final url = "https://loripsum.net/api";
 
-    final response = await http.get(url);
+    final response = await http.get(url)
+        .timeout(Duration(seconds: 10),onTimeout: _onTimeOut);
+
     var body = response.body;
 
     body = body.replaceAll("<p>", "");
@@ -110,4 +116,9 @@ class CarroService {
 
     return carros;
   }*/
+
+
+  static FutureOr<http.Response> _onTimeOut() {
+    throw SocketException("Não foi possível se comunicar com o servidor.");
+  }
 }
