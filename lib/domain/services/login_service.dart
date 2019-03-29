@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -20,7 +21,8 @@ class LoginService {
 
       final body = {"login": login, "senha": senha};
 
-      final response = await http.post(url, body: body);
+      final response = await http.post(url, body: body)
+          .timeout(Duration(seconds: 10),onTimeout:_onTimeout);
 
       final s = response.body;
       print(s);
@@ -34,6 +36,10 @@ class LoginService {
     } catch (error) {
       return Response(false, handleError(error));
     }
+  }
+
+  static FutureOr<http.Response> _onTimeout() {
+    throw SocketException("Não foi possível se comunicar com o servidor");
   }
 
   static String handleError(error) {
