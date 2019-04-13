@@ -31,21 +31,30 @@ class _MapPageState extends State<MapPage> {
           mapType: MapType.normal,
           onMapCreated: _onMapCreated,
           zoomGesturesEnabled: true,
+          markers: Set.of(_getMarkers()),
         ),
       ),
     );
   }
 
+  // Retorna os marcores da tela.
+  List<Marker> _getMarkers() {
+    return [
+      Marker(
+        markerId: MarkerId("1"),
+        position: carro.latlng(),
+        infoWindow:
+            InfoWindow(title: "Ferrari FF", snippet: "Fábrica da Ferrari"),
+        onTap: () {
+          print("> ${carro.nome}");
+        },
+      )
+    ];
+  }
+
   void _onMapCreated(GoogleMapController controller) {
     setState(() {
       mapController = controller;
-      mapController.addMarker(MarkerOptions(
-          position: carro.latlng(),
-          infoWindowText: InfoWindowText("Ferrari FF", "Fábrica da Ferrari")
-      ));
     });
   }
-
-  // se quiser testar...
-  LatLng curitiba() => LatLng(-25.429087, -49.310993);
 }
