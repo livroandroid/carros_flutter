@@ -18,6 +18,9 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
+    print(carro);
+    print(carro.latlng);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(carro.nome),
@@ -25,27 +28,41 @@ class _MapPageState extends State<MapPage> {
       body: Container(
         child: GoogleMap(
           initialCameraPosition: CameraPosition(
-            target: carro.latlng,
+            target: latlng(),
             zoom: 12,
           ),
           mapType: MapType.normal,
           onMapCreated: _onMapCreated,
           zoomGesturesEnabled: true,
+          markers: Set.of(_getMarkers()),
         ),
       ),
     );
   }
 
+  // Retorna os marcores da tela.
+  List<Marker> _getMarkers() {
+    return [
+      Marker(
+        markerId: MarkerId("1"),
+        position: latlng(),
+        infoWindow:
+        InfoWindow(title: "Ferrari FF", snippet: "Fábrica da Ferrari"),
+        onTap: () {
+          print("> ${carro.nome}");
+        },
+      )
+    ];
+  }
+
   void _onMapCreated(GoogleMapController controller) {
     setState(() {
       mapController = controller;
-      mapController.addMarker(MarkerOptions(
-        position: carro.latlng,
-        infoWindowText: InfoWindowText("Ferrari FF", "Fábrica da Ferrari")
-      ));
     });
   }
 
-  // se quiser testar...
-  LatLng curitiba() => LatLng(-25.429087, -49.310993);
+  latlng() {
+    return carro.latlng;
+    return LatLng(-25.429087, -49.310993);
+  }
 }
