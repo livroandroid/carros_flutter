@@ -38,6 +38,9 @@ class FavoritosService {
 
     // Busca o carro no Firestore
     var document = _carros.document("${carro.id}");
+    if(document == null) {
+      return false;
+    }
 
     var documentSnapshot = await document.get();
 
