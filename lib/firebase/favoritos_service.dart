@@ -9,8 +9,8 @@ class FavoritosService {
 
   CollectionReference get _carros {
     String uid = firebaseUserUid;
-    DocumentReference refUser = Firestore.instance.collection("users").document(
-        uid);
+    DocumentReference refUser = Firestore.instance.collection("users")
+        .document(uid);
     return refUser.collection("carros");
   }
 
