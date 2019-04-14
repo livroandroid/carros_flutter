@@ -1,7 +1,9 @@
 
+import 'dart:async';
+
 import 'package:carros/domain/carro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/src/widgets/async.dart';
+import 'package:flutter/material.dart';
 
 class FavoritosService {
   getCarros() => _carros.snapshots();

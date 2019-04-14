@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/services/carro_service.dart';
 import 'package:carros/firebase/favoritos_service.dart';
