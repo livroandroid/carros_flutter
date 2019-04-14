@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/response.dart';
+import 'package:carros/utils/prefs.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -11,7 +12,7 @@ import 'package:path/path.dart' as path;
 
 class CarroService {
 
-  static bool FAKE = false;
+  static bool FAKE = true;
 
   static Future<List<Carro>> getCarrosByTipo(String tipo) async {
     String json;
@@ -117,6 +118,12 @@ class CarroService {
   }
 
   static Future<String> getLoremIpsim() async {
+
+    String lorem = await Prefs.getString("lorem.ipsim");
+    if(lorem.isNotEmpty) {
+      return lorem;
+    }
+
     final url = "https://loripsum.net/api";
 
     final response = await http.get(url)
@@ -126,6 +133,8 @@ class CarroService {
 
     body = body.replaceAll("<p>", "");
     body = body.replaceAll("</p>", "");
+
+    Prefs.setString("lorem.ipsim", body);
 
     return body;
   }
