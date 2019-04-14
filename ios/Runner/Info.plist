@@ -6,6 +6,8 @@
 <key>CFBundleURLTypes</key>
 <array>
 	<dict>
+	    <key>NSFaceIDUsageDescription</key>
+        <string>Autenticar no Aplicativo</string>
 		<key>CFBundleTypeRole</key>
 		<string>Editor</string>
 		<key>CFBundleURLSchemes</key>
