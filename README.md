@@ -80,3 +80,7 @@ Manual de como usar as branches app dos carros.
 * 14_Firebase_Database
 
     - Lista de favoritos no realtime database.
+
+* 14_Firebase_Database_2
+
+    - Lista de favoritos separada para cada usuário logado.
