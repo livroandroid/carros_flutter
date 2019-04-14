@@ -1,12 +1,18 @@
 
 import 'package:carros/domain/carro.dart';
+import 'package:carros/firebase/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/src/widgets/async.dart';
 
 class FavoritosService {
   getCarros() => _carros.snapshots();
 
-  CollectionReference get _carros => Firestore.instance.collection("carros");
+  CollectionReference get _carros {
+    String uid = firebaseUserUid;
+    DocumentReference refUser = Firestore.instance.collection("users").document(
+        uid);
+    return refUser.collection("carros");
+  }
 
   List<Carro> toList(AsyncSnapshot<QuerySnapshot> snapshot) {
     return snapshot.data.documents

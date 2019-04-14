@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/response.dart';
+import 'package:carros/utils/prefs.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
@@ -88,6 +89,11 @@ class CarroService {
   }
 
   static Future<String> getLoremIpsim() async {
+    String lorem = await Prefs.getString("lorem");
+    if(lorem.isNotEmpty) {
+      return lorem;
+    }
+
     final url = "https://loripsum.net/api";
 
     final response = await http.get(url);
@@ -95,6 +101,8 @@ class CarroService {
 
     body = body.replaceAll("<p>", "");
     body = body.replaceAll("</p>", "");
+
+    Prefs.setString("lorem",body);
 
     return body;
   }

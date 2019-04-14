@@ -31,6 +31,8 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         this.fUser = fUser;
         if (fUser != null) {
+          firebaseUserUid = fUser.uid;
+
           pushReplacement(context, HomePage());
         } else {
           showForm = true;
