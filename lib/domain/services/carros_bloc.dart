@@ -9,7 +9,7 @@ class CarrosBloc {
 
   Future fetch(String tipo) {
     // Web Service
-    return CarroService.getCarros(tipo)
+    return CarroService.getCarrosByTipo(tipo)
         .then((carros) {
       _controller.sink.add(carros);
     }).catchError((error) {

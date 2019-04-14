@@ -9,7 +9,9 @@ class CarrosListView extends StatelessWidget {
 
   final List<Carro> carros;
 
-  const CarrosListView(this.carros);
+  final bool search;
+
+  const CarrosListView(this.carros, {this.search = false});
 
   @override
   Widget build(BuildContext context) {
@@ -84,10 +86,6 @@ class CarrosListView extends StatelessWidget {
     );
   }
 
-  void _onClickCarro(BuildContext context, Carro carro) {
-    push(context, CarroPage(carro));
-  }
-
   void _onLongClickCarro(BuildContext context, Carro c) {
     showModalBottomSheet(context: context,builder: (context){
       return Column(
@@ -118,6 +116,16 @@ class CarrosListView extends StatelessWidget {
         ],
       );
     });
+  }
+
+  void _onClickCarro(BuildContext context, Carro carro) {
+    if(search) {
+      // Retorna da busca
+      pop(context, carro);
+    } else {
+      // Navega para a tela de detlahes
+      push(context, CarroPage(carro));
+    }
   }
 
   void _onClickShare(BuildContext context, Carro c) {

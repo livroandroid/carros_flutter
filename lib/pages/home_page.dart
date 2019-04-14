@@ -3,6 +3,8 @@ import 'package:carros/drawer_list.dart';
 import 'package:carros/pages/carro_form_page.dart';
 import 'package:carros/pages/carros_page.dart';
 import 'package:carros/pages/favoritos_page.dart';
+import 'package:carros/search/carros_sarch.dart';
+import 'package:carros/utils/alerts.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:carros/utils/prefs.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +40,12 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: AppBar(
         title: Text("Carros"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: _onClickSearch,
+          )
+        ],
         bottom: TabBar(
           controller: tabController,
           tabs: [
@@ -77,5 +85,13 @@ class _HomePageState extends State<HomePage>
       ),
       drawer: DrawerList(),
     );
+  }
+
+  void _onClickSearch() async {
+    final carro = await showSearch<Carro>(
+        context: context, delegate: CarrosSearch());
+    if (carro != null) {
+      alert(context, "Busca", carro.nome);
+    }
   }
 }

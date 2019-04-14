@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 
 class CarroService {
-  static Future<List<Carro>> getCarros(String tipo) async {
+  static Future<List<Carro>> getCarrosByTipo(String tipo) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     print(connectivityResult);
     if (connectivityResult == ConnectivityResult.none) {
@@ -21,6 +21,20 @@ class CarroService {
 
     final response = await http.get(url)
           .timeout(Duration(seconds: 10),onTimeout: _onTimeOut);
+
+    final mapCarros = json.decode(response.body).cast<Map<String, dynamic>>();
+
+    final carros = mapCarros.map<Carro>((json) => Carro.fromJson(json)).toList();
+
+    return carros;
+  }
+
+  static Future<List<Carro>> getCarros() async {
+    final url = "http://livrowebservices.com.br/rest/carros";
+    print("> get: $url");
+
+    final response = await http.get(url)
+        .timeout(Duration(seconds: 10),onTimeout: _onTimeOut);
 
     final mapCarros = json.decode(response.body).cast<Map<String, dynamic>>();
 
@@ -120,5 +134,19 @@ class CarroService {
 
   static FutureOr<http.Response> _onTimeOut() {
     throw SocketException("Não foi possível se comunicar com o servidor.");
+  }
+
+  static search(String query) async {
+    List<Carro> carros = await getCarros();
+
+    List<Carro> list = [];
+
+    for(Carro c in carros) {
+      if(c.nome.toUpperCase().contains(query.toUpperCase())) {
+        list.add(c);
+      }
+    }
+
+    return list;
   }
 }

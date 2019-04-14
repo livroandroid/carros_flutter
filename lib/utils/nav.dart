@@ -14,6 +14,6 @@ pushReplacement(BuildContext context, Widget page) {
   }));
 }
 
-pop(BuildContext context) {
-  Navigator.pop(context);
+pop<T extends Object>(context, [ T result ]) {
+  Navigator.pop(context, result);
 }
