@@ -63,6 +63,5 @@ class _MapPageState extends State<MapPage> {
 
   latlng() {
     return carro.latlng;
-    return LatLng(-25.429087, -49.310993);
   }
 }
