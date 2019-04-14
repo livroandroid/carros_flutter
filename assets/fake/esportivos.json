@@ -1,0 +1,102 @@
+[
+  {
+    "id": 11,
+    "tipo": "esportivos",
+    "nome": "Ferrari FF",
+    "desc": "Descrição Ferrari FF",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/esportivos/Ferrari_FF.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/esportivos/ferrari_ff.mp4",
+    "latitude": "44.532218",
+    "longitude": "10.864019"
+  },
+  {
+    "id": 12,
+    "tipo": "esportivos",
+    "nome": "AUDI GT Spyder",
+    "desc": "Descrição AUDI GT Spyder",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/esportivos/Audi_Spyder.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/esportivos/audi_gt.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 13,
+    "tipo": "esportivos",
+    "nome": "Porsche Panamera",
+    "desc": "Descrição Porsche Panamera",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/esportivos/Porsche_Panamera.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/esportivos/porsche_panamera.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 14,
+    "tipo": "esportivos",
+    "nome": "Lamborghini Aventador",
+    "desc": "Descrição Lamborghini Aventador",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/esportivos/Lamborghini_Aventador.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/esportivos/lamborghini_aventador.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 15,
+    "tipo": "esportivos",
+    "nome": "Chevrolet Corvette Z06",
+    "desc": "Descrição Chevrolet Corvette Z06",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/esportivos/Chevrolet_Corvette_Z06.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/esportivos/chevrolet_corvette.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 16,
+    "tipo": "esportivos",
+    "nome": "BMW M5",
+    "desc": "Descrição BMW M5",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/esportivos/BMW.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/esportivos/bmw-m5.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 17,
+    "tipo": "esportivos",
+    "nome": "Renault Megane RS Trophy",
+    "desc": "Descrição Renault Megane RS Trophy",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/esportivos/Renault_Megane_Trophy.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/esportivos/renault_megane.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 18,
+    "tipo": "esportivos",
+    "nome": "Maserati Grancabrio Sport",
+    "desc": "Descrição Maserati Grancabrio Sport",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/esportivos/Maserati_Grancabrio_Sport.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/esportivos/renault_megane.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 19,
+    "tipo": "esportivos",
+    "nome": "McLAREN MP4-12C",
+    "desc": "Descrição McLAREN MP4-12C",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/esportivos/McLAREN.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/esportivos/mcLaren.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 20,
+    "tipo": "esportivos",
+    "nome": "MERCEDES-BENZ C63 AMG",
+    "desc": "Descrição MERCEDES-BENZ C63 AMG",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/esportivos/MERCEDES_BENZ_AMG.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/esportivos/mercedes.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  }
+]

@@ -1,0 +1,99 @@
+[
+  {
+    "id": 21,
+    "tipo": "luxo",
+    "nome": "Bugatti Veyron x",
+    "desc": "Descrição Bugatti Veyron",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/luxo/Bugatti_Veyron.png"
+  },
+  {
+    "id": 22,
+    "tipo": "luxo",
+    "nome": "Ferrari Enzo",
+    "desc": "Descrição Ferrari Enzo",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/luxo/Ferrari_Enzo.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/luxo/ferrari_enzo.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 23,
+    "tipo": "luxo",
+    "nome": "Lamborghini Reventon",
+    "desc": "Descrição Lamborghini Reventon",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/luxo/Lamborghini_Reventon.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/luxo/lamborghini _reventon.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 24,
+    "tipo": "luxo",
+    "nome": "Leblanc Mirabeau",
+    "desc": "Descrição Leblanc Mirabeau",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/luxo/Leblanc_Mirabeau.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/luxo/leblanc_mirabeau.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 25,
+    "tipo": "luxo",
+    "nome": "Shelby Supercars Ultimate",
+    "desc": "Descrição Shelby Supercars Ultimate",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/luxo/Shelby_Supercars_Ultimate.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/luxo/shelby.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 26,
+    "tipo": "luxo",
+    "nome": "Pagani Zonda",
+    "desc": "Descrição Pagani Zonda",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/luxo/Pagani_Zonda.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/luxo/pagani_zonda.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 27,
+    "tipo": "luxo",
+    "nome": "Koenigsegg CCX",
+    "desc": "Descrição Koenigsegg CCX",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/luxo/Koenigsegg_CCX.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/luxo/koenigsegg.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 28,
+    "tipo": "luxo",
+    "nome": "Mercedes SLR McLaren",
+    "desc": "Descrição Mercedes SLR McLaren",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/luxo/Mercedes_McLaren.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/luxo/mclaren_slr.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 29,
+    "tipo": "luxo",
+    "nome": "Rolls Royce Phantom",
+    "desc": "Descrição Rolls Royce Phantom",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/luxo/Rolls_Royce_Phantom.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/luxo/rolls_royce.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  },
+  {
+    "id": 30,
+    "tipo": "luxo",
+    "nome": "Lexus LFA",
+    "desc": "Descrição Lexus LFA",
+    "urlFoto": "http://www.livroandroid.com.br/livro/carros/luxo/Lexus_LFA.png",
+    "urlVideo": "http://www.livroandroid.com.br/livro/carros/luxo/lexus.mp4",
+    "latitude": "-23.564224",
+    "longitude": "-46.653156"
+  }
+]
