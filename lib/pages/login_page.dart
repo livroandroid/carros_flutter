@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         this.fUser = fUser;
         if (fUser != null) {
-          //pushReplacement(context, HomePage());
+          pushReplacement(context, HomePage());
           showForm = true;
         } else {
           showForm = true;

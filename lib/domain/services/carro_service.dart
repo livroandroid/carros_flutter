@@ -14,10 +14,22 @@ class CarroService {
 
   static bool FAKE = true;
 
-  static Future<List<Carro>> getCarrosByTipo(String tipo) async {
+  static Future<List<Carro>> getCarrosByTipo(String tipo, int page) async {
     String json;
 
     if(FAKE) {
+
+      if(page == 0) {
+        tipo = "classicos";
+      } else if(page == 1) {
+        tipo = "esportivos";
+      } else if(page == 2) {
+        tipo = "luxo";
+      } else {
+        return [];
+      }
+      print("Busca page $page");
+
       json = await rootBundle.loadString("assets/fake/$tipo.json");
     } else {
       var connectivityResult = await (Connectivity().checkConnectivity());

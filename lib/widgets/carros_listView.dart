@@ -1,4 +1,3 @@
-
 import 'package:carros/domain/carro.dart';
 import 'package:carros/pages/carro_page.dart';
 import 'package:carros/utils/nav.dart';
@@ -6,18 +5,34 @@ import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
 class CarrosListView extends StatelessWidget {
-
   final List<Carro> carros;
 
   final bool search;
 
-  const CarrosListView(this.carros, {this.search = false});
+  final ScrollController scrollController;
+
+  final bool showProgress;
+
+  const CarrosListView(this.carros,
+      {this.search = false, this.scrollController,this.showProgress=false});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: carros.length,
+      controller: scrollController,
+      itemCount: showProgress ? carros.length + 1 : carros.length,
       itemBuilder: (ctx, idx) {
+
+
+        if (showProgress && carros.length == idx) {
+          return Container(
+            height: 100,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+
         // Carro
         final c = carros[idx];
         return Container(
@@ -37,7 +52,8 @@ class CarrosListView extends StatelessWidget {
                   children: <Widget>[
                     Center(
                       child: Image.network(
-                        c.urlFoto ?? "http://www.livroandroid.com.br/livro/carros/esportivos/Ferrari_FF.png",
+                        c.urlFoto ??
+                            "http://www.livroandroid.com.br/livro/carros/esportivos/Ferrari_FF.png",
                         height: 150,
                       ),
                     ),
@@ -87,39 +103,45 @@ class CarrosListView extends StatelessWidget {
   }
 
   void _onLongClickCarro(BuildContext context, Carro c) {
-    showModalBottomSheet(context: context,builder: (context){
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Text(c.nome,style: TextStyle(
-              fontSize: 22,fontWeight: FontWeight.bold,
-            ),),
-          ),
-          ListTile(
-            title: Text("Detalhes"),
-            leading: Icon(Icons.directions_car),
-            onTap: () {
-              pop(context);
-              _onClickCarro(context, c);
-            },
-          ),
-          ListTile(
-            title: Text("Share"),
-            leading: Icon(Icons.share),
-            onTap: () {
-              pop(context);
-              _onClickShare(context, c);
-            },
-          )
-        ],
-      );
-    });
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  c.nome,
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              ListTile(
+                title: Text("Detalhes"),
+                leading: Icon(Icons.directions_car),
+                onTap: () {
+                  pop(context);
+                  _onClickCarro(context, c);
+                },
+              ),
+              ListTile(
+                title: Text("Share"),
+                leading: Icon(Icons.share),
+                onTap: () {
+                  pop(context);
+                  _onClickShare(context, c);
+                },
+              )
+            ],
+          );
+        });
   }
 
   void _onClickCarro(BuildContext context, Carro carro) {
-    if(search) {
+    if (search) {
       // Retorna da busca
       pop(context, carro);
     } else {
