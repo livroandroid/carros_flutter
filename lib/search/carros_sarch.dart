@@ -28,11 +28,6 @@ class CarrosSearch extends SearchDelegate<Carro> {
   }
 
   @override
-  Widget buildResults(BuildContext context) {
-    return buildSuggestions(context);
-  }
-
-  @override
   Widget buildSuggestions(BuildContext context) {
 
     if(query.length > 2) {
@@ -56,4 +51,8 @@ class CarrosSearch extends SearchDelegate<Carro> {
     return Container();
   }
 
+  @override
+  Widget buildResults(BuildContext context) {
+    return buildSuggestions(context);
+  }
 }
