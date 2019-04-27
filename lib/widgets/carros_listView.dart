@@ -23,7 +23,6 @@ class CarrosListView extends StatelessWidget {
       itemCount: showProgress ? carros.length + 1 : carros.length,
       itemBuilder: (ctx, idx) {
 
-
         if (showProgress && carros.length == idx) {
           return Container(
             height: 100,

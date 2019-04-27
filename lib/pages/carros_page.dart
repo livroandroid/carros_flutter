@@ -37,6 +37,8 @@ class _CarrosPageState extends State<CarrosPage>
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
         print("FIM!");
+
+        // Descomente isso para testar a paginação
         _bloc.fetchMore(tipo);
       }
     });
@@ -44,7 +46,6 @@ class _CarrosPageState extends State<CarrosPage>
 
   @override
   Widget build(BuildContext context) {
-
     final List<Carro> list = [];
 
     return RefreshIndicator(
@@ -61,30 +62,18 @@ class _CarrosPageState extends State<CarrosPage>
 
               print("Carros $carros");
 
+              // Descomente isso para testar a paginação
               bool showProgress = carros.length > 0 && carros.length % 10 == 0;
 
-              return CarrosListView(list, scrollController:_scrollController, showProgress: showProgress,);
+              return CarrosListView(
+                list,
+                scrollController: _scrollController,
+                showProgress: showProgress,
+              );
             } else if (snapshot.hasError) {
               final error = snapshot.error;
 
-              return Center(
-                child: ListView(
-                  shrinkWrap: true,
-                  children: <Widget>[
-                    Text(
-                      error is SocketException
-                          ? "Conexão indisponível, por favor verifique sua internet."
-                          : "Ocorreu um erro ao buscar a lista de carros",
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 26,
-                        fontStyle: FontStyle.italic,
-                      ),
-                      textAlign: TextAlign.center,
-                    )
-                  ],
-                ),
-              );
+              return _error(error);
             } else {
               return Center(
                 child: CircularProgressIndicator(),
@@ -92,6 +81,27 @@ class _CarrosPageState extends State<CarrosPage>
             }
           },
         ),
+      ),
+    );
+  }
+
+  _error(Object error) {
+    return Center(
+      child: ListView(
+        shrinkWrap: true,
+        children: <Widget>[
+          Text(
+            error is SocketException
+                ? "Conexão indisponível, por favor verifique sua internet."
+                : "Ocorreu um erro ao buscar a lista de carros",
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: 26,
+              fontStyle: FontStyle.italic,
+            ),
+            textAlign: TextAlign.center,
+          )
+        ],
       ),
     );
   }

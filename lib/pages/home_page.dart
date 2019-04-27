@@ -80,11 +80,15 @@ class _HomePageState extends State<HomePage>
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          push(context, CarroFormPage());
+          _onClickAdd();
         },
       ),
       drawer: DrawerList(),
     );
+  }
+
+  void _onClickAdd() {
+    push(context, CarroFormPage());
   }
 
   void _onClickSearch() async {
