@@ -1,3 +1,4 @@
+import 'package:carros/bus/event_bus.dart';
 import 'package:carros/domain/carro.dart';
 import 'package:carros/drawer_list.dart';
 import 'package:carros/pages/carro_form_page.dart';
@@ -80,7 +81,7 @@ class _HomePageState extends State<HomePage>
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          push(context, CarroFormPage());
+          _onClickAdd();
         },
       ),
       drawer: DrawerList(),
@@ -93,5 +94,16 @@ class _HomePageState extends State<HomePage>
     if (carro != null) {
       alert(context, "Busca", carro.nome);
     }
+  }
+
+  void _onClickAdd() async {
+    push(context, CarroFormPage());
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    //eventBus.close();
   }
 }

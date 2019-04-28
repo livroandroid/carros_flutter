@@ -3,8 +3,9 @@ import 'package:carros/pages/carro_page.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
+import 'package:flutter/scheduler.dart';
 
-class CarrosListView extends StatelessWidget {
+class CarrosListView extends StatefulWidget {
   final List<Carro> carros;
 
   final bool search;
@@ -13,16 +14,37 @@ class CarrosListView extends StatelessWidget {
 
   final bool showProgress;
 
+  final bool scrollToTheEnd;
+
   const CarrosListView(this.carros,
-      {this.search = false, this.scrollController,this.showProgress=false});
+      {this.search = false, this.scrollController,this.showProgress=false, this.scrollToTheEnd = false});
+
+  @override
+  _CarrosListViewState createState() => _CarrosListViewState();
+}
+
+class _CarrosListViewState extends State<CarrosListView> {
+
+  ScrollController get scrollController => widget.scrollController;
+  bool get showProgress => widget.showProgress;
+  List<Carro> get carros => widget.carros;
 
   @override
   Widget build(BuildContext context) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      if(widget.scrollToTheEnd) {
+        scrollController.animateTo(
+          scrollController.position.maxScrollExtent,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeOut,
+        );
+      }
+    });
+
     return ListView.builder(
       controller: scrollController,
       itemCount: showProgress ? carros.length + 1 : carros.length,
       itemBuilder: (ctx, idx) {
-
 
         if (showProgress && carros.length == idx) {
           return Container(
@@ -34,7 +56,7 @@ class CarrosListView extends StatelessWidget {
         }
 
         // Carro
-        final c = carros[idx];
+        final c = widget.carros[idx];
         return Container(
           height: 280,
           child: InkWell(
@@ -140,13 +162,18 @@ class CarrosListView extends StatelessWidget {
         });
   }
 
-  void _onClickCarro(BuildContext context, Carro carro) {
-    if (search) {
+  void _onClickCarro(BuildContext context, Carro carro) async {
+    if (widget.search) {
       // Retorna da busca
       pop(context, carro);
     } else {
       // Navega para a tela de detlahes
-      push(context, CarroPage(carro));
+      Carro c = await push(context, CarroPage(carro));
+      if(c != null) {
+        // Remove o carro excluído da lista
+        widget.carros.remove(carro);
+        setState(() {});
+      }
     }
   }
 

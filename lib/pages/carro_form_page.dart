@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:carros/bus/event_bus.dart';
+import 'package:carros/bus/events.dart';
 import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/services/carro_service.dart';
 import 'package:carros/utils/alerts.dart';
@@ -251,7 +253,13 @@ class _CarroFormPageState extends State<CarroFormPage> {
 
     final response = await CarroService.salvar(c, fileCamera);
     if (response.isOk()) {
-      alert(context, "Carro salvo", response.msg, callback: () => pop(context));
+
+      alert(context, "Carro salvo", response.msg, callback: () {
+        pop(context);
+
+        eventBus.post(NovoCarroEvent(c));
+
+      });
     } else {
       alert(context, "Erro", response.msg);
     }

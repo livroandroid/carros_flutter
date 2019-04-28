@@ -214,7 +214,7 @@ class _CarroPageState extends State<CarroPage> {
 
     final response = await CarroService.deletar(carro.id);
     if(response.isOk()) {
-      pop(context);
+      pop(context, carro);
     } else {
       alert(context,"Erro", response.msg);
     }

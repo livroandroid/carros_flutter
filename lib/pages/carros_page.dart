@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:carros/bus/event_bus.dart';
+import 'package:carros/bus/events.dart';
 import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/services/carros_bloc.dart';
 import 'package:carros/widgets/carros_listView.dart';
@@ -19,33 +21,39 @@ class _CarrosPageState extends State<CarrosPage>
     with AutomaticKeepAliveClientMixin<CarrosPage> {
   final _bloc = CarrosBloc();
 
+  StreamSubscription subscription;
+
   get tipo => widget.tipo;
 
   @override
   bool get wantKeepAlive => true;
 
-  ScrollController _scrollController = ScrollController();
+   ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
 
-    _bloc.fetch(tipo);
+    _bloc.fetch(tipo, false);
 
-    // Fim do scroll, carrega mais
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels ==
-          _scrollController.position.maxScrollExtent) {
-        print("FIM!");
-        _bloc.fetchMore(tipo);
-      }
+    // Event Bus
+    subscription = eventBus.stream.listen((event) {
+      print(">> event $event ");
+      _onEvent(event);
     });
+  }
+
+  void _onEvent(event) {
+    if(event is NovoCarroEvent) {
+      Carro c = event.carro;
+      if(c.tipo == tipo) {
+        _bloc.fetch(tipo, true);
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-
-    final List<Carro> list = [];
 
     return RefreshIndicator(
       onRefresh: _onRefresh,
@@ -55,15 +63,11 @@ class _CarrosPageState extends State<CarrosPage>
           stream: _bloc.stream,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              final List<Carro> carros = snapshot.data;
+              final CarrosData carrosData = snapshot.data;
 
-              list.addAll(carros);
+              final List<Carro> carros = carrosData.carros;
 
-              print("Carros $carros");
-
-              bool showProgress = carros.length > 0 && carros.length % 10 == 0;
-
-              return CarrosListView(list, scrollController:_scrollController, showProgress: showProgress,);
+              return CarrosListView(carros, scrollController: scrollController,scrollToTheEnd: carrosData.scrollToTheEnd);
             } else if (snapshot.hasError) {
               final error = snapshot.error;
 
@@ -98,13 +102,13 @@ class _CarrosPageState extends State<CarrosPage>
 
   Future<void> _onRefresh() {
     print("onRefresh");
-    return _bloc.fetch(tipo);
+    return _bloc.fetch(tipo, false);
   }
 
   @override
   void dispose() {
     super.dispose();
 
-    _bloc.close();
+    subscription?.cancel();
   }
 }
