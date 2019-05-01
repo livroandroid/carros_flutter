@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:carros/firebase/firebase_service.dart';
 import 'package:carros/pages/cadastro_page.dart';
 import 'package:carros/pages/home_page.dart';
@@ -8,6 +10,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
+
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -23,6 +27,8 @@ class _LoginPageState extends State<LoginPage> {
   var _progress = false;
 
   FirebaseUser fUser;
+  final FirebaseMessaging _firebaseMessaging
+    = FirebaseMessaging();
   var showForm = false;
 
   void initState() {
@@ -32,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         this.fUser = fUser;
         if (fUser != null) {
-          pushReplacement(context, HomePage());
+          //pushReplacement(context, HomePage());
           showForm = true;
         } else {
           showForm = true;
@@ -40,6 +46,38 @@ class _LoginPageState extends State<LoginPage> {
       });
     });
 
+    _initRemoteConfig();
+    _initFcm();
+  }
+
+  void _initFcm() {
+    _firebaseMessaging.getToken().then((token) {
+      print("Firebase Token [$token]");
+    });
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print('on message $message');
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print('\n\n\n*** on resume $message');
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print('on launch $message');
+      },
+    );
+
+    if (Platform.isIOS) {
+      _firebaseMessaging.requestNotificationPermissions(
+          IosNotificationSettings(sound: true, badge: true, alert: true));
+      _firebaseMessaging.onIosSettingsRegistered
+          .listen((IosNotificationSettings settings) {
+        print("iOS Push Settings: [$settings]");
+      });
+    }
+  }
+
+
+  _initRemoteConfig() {
     RemoteConfig.instance.then((remoteConfig) {
       remoteConfig.setConfigSettings(RemoteConfigSettings(debugMode: true));
 
@@ -58,6 +96,10 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    _firebaseMessaging.getToken().then((token) {
+      print("Firebase Token [$token]");
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: fUser != null
