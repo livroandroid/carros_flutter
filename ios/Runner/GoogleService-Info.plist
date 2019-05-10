@@ -2,14 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
-	<string>ca-app-pub-3940256099942544/2934735716</string>
-	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
-	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>1058831262361-nk8e29o8gem4f30or6vr519hbfck7509.apps.googleusercontent.com</string>
+	<string>1058831262361-snptj7764q47ahcsrskvbn9j5bs36b9a.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1058831262361-nk8e29o8gem4f30or6vr519hbfck7509</string>
+	<string>com.googleusercontent.apps.1058831262361-snptj7764q47ahcsrskvbn9j5bs36b9a</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1058831262361-0v7lu2ik98r218hmpbe904o4mr78q64e.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAqqI9vGvnCoC7DTZxNeuOmkLK2Ys4vPfQ</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,23 +15,23 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>br.com.livroandroid.carros</string>
+	<string>br.com.livroandroid.carros-flutter</string>
 	<key>PROJECT_ID</key>
 	<string>carros-3a13e</string>
 	<key>STORAGE_BUCKET</key>
 	<string>carros-3a13e.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true></true>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
 	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1058831262361:ios:cc337c3d126e9d00</string>
+	<string>1:1058831262361:ios:4a98e57fd256e5ef</string>
 	<key>DATABASE_URL</key>
 	<string>https://carros-3a13e.firebaseio.com</string>
 </dict>

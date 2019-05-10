@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void _initFcm() {
     _firebaseMessaging.getToken().then((token) {
-      print("Firebase Token [$token]");
+      print("init > Firebase Token [$token]");
     });
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
@@ -97,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     _firebaseMessaging.getToken().then((token) {
-      print("Firebase Token [$token]");
+      print("build > Firebase Token [$token]");
     });
 
     return Scaffold(
