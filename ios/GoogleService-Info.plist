@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>526874072640-14i0gi0ttioqv863hc82nhum84pe5ios.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.526874072640-14i0gi0ttioqv863hc82nhum84pe5ios</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCfHuZaTrcT6HDRcbS7Kjl4hw3L1-uNEms</string>
+	<key>GCM_SENDER_ID</key>
+	<string>526874072640</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.gov.fazenda.tesourodireto</string>
+	<key>PROJECT_ID</key>
+	<string>tesouro-direto-81332</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tesouro-direto-81332.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:526874072640:ios:b9dc862beaa9f8ef</string>
+	<key>DATABASE_URL</key>
+	<string>https://tesouro-direto-81332.firebaseio.com</string>
+</dict>
+</plist>
