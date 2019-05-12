@@ -48,7 +48,8 @@ class CarroService {
 
     final mapCarros = convert.json.decode(json).cast<Map<String, dynamic>>();
 
-    final carros = mapCarros.map<Carro>((json) => Carro.fromJson(json)).toList();
+    final carros = mapCarros.map<Carro>(
+            (json) => Carro.fromJson(json)).toList();
 
     return carros;
   }
