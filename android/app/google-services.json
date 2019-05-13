@@ -33,20 +33,20 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
               "client_id": "1058831262361-1bn66jf7eg6qdr281snvm1h1v0hq3ijr.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1058831262361-snptj7764q47ahcsrskvbn9j5bs36b9a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.livroandroid.carros-flutter"
+              }
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }
