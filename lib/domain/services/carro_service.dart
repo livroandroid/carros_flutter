@@ -12,7 +12,7 @@ import 'package:path/path.dart' as path;
 
 class CarroService {
 
-  static bool FAKE = false;
+  static bool FAKE = true;
 
   static Future<List<Carro>> getCarrosByTipo(String tipo, int page) async {
     String json;
@@ -66,6 +66,18 @@ class CarroService {
     final carros = mapCarros.map<Carro>((json) => Carro.fromJson(json)).toList();
 
     return carros;
+  }
+
+  static Future<Carro> getCarro(int id) async {
+    final url = "http://livrowebservices.com.br/rest/carros/$id";
+    print("> get: $url");
+
+    final response = await http.get(url)
+        .timeout(Duration(seconds: 10),onTimeout: _onTimeOut);
+
+    final map = convert.json.decode(response.body);
+
+    return Carro.fromJson(map);
   }
 
   static Future<Response> salvar(Carro c, File file) async {

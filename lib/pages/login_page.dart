@@ -127,6 +127,7 @@ class _LoginPageState extends State<LoginPage> {
       child: ListView(
         children: <Widget>[
           TextFormField(
+            key: Key("email"),
             controller: _tLogin,
             validator: _validateLogin,
             keyboardType: TextInputType.text,

@@ -10,12 +10,12 @@ void main() {
     List<Carro> carros = await CarroService.getCarros();
     expect(carros.length > 0, true);
 
-    expect(carros.length, 34);
+    expect(carros.length, 36);
   });
 
   test('Carro Ferrari', () async {
     Carro c = await CarroService.getCarro(11);
-    expect("Ferrari FF", c.nome);
+    expect(c.nome, "Ferrari FF");
   });
 
 }
