@@ -185,14 +185,6 @@ class CarroService {
   static search(String query) async {
     List<Carro> carros = await getCarros();
 
-    List<Carro> list = [];
-
-    for(Carro c in carros) {
-      if(c.nome.toUpperCase().contains(query.toUpperCase())) {
-        list.add(c);
-      }
-    }
-
-    return list;
+    return carros.where((c) => c.nome.toUpperCase().contains(query.toUpperCase())).toList();
   }
 }

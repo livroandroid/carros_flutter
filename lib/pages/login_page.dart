@@ -19,8 +19,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _tLogin = TextEditingController(text: "rlecheta@gmail.com");
-  final _tSenha = TextEditingController(text: "123456");
+  final _tLogin = TextEditingController(text: "");
+  final _tSenha = TextEditingController(text: "");
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
   FirebaseUser fUser;
   final FirebaseMessaging _firebaseMessaging
     = FirebaseMessaging();
-  var showForm = false;
+  var showForm = true;
 
   void initState() {
     super.initState();
