@@ -4,57 +4,12 @@ import 'package:carros/bus/event_bus.dart';
 import 'package:carros/bus/events.dart';
 import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/services/carro_service.dart';
+import 'package:carros/firebase/firebase_service.dart';
 import 'package:carros/utils/alerts.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
-class FotoPage extends StatefulWidget {
-  @override
-  _FotoPageState createState() => _FotoPageState();
-}
-
-class _FotoPageState extends State<FotoPage> {
-  File fileCamera;
-
-  @override
-  void initState() {
-    super.initState();
-
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          RaisedButton(
-            child: Text("Tirar Foto"),
-            onPressed: () => _onClickTirarFoto(context),
-          ),
-          GestureDetector(
-            onTap: () {
-              _onClickTirarFoto(context);
-            },
-            child: fileCamera != null ?
-            Image.file(fileCamera) :
-            Image.asset("assets/images/camera.png"),
-          )
-        ],
-      ),
-    );
-  }
-
-  _onClickTirarFoto(context) async {
-    fileCamera =
-        await ImagePicker.pickImage
-      (source: ImageSource.camera);
-    setState(() {
-
-    });
-  }
-}
 
 
 class CarroFormPage extends StatefulWidget {
@@ -213,6 +168,8 @@ class _CarroFormPageState extends State<CarroFormPage> {
     fileCamera =
       await ImagePicker.pickImage
         (source: ImageSource.camera);
+
+    //FirebaseService.uploadFirebaseStorage(fileCamera);
 
     setState(() {
     });

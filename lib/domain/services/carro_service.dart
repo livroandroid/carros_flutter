@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:carros/domain/carro.dart';
 import 'package:carros/domain/response.dart';
+import 'package:carros/firebase/firebase_service.dart';
 import 'package:carros/utils/prefs.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/services.dart';
@@ -105,6 +106,10 @@ class CarroService {
   }
 
   static Future<Response> upload(File file) async {
+
+    // Faz upload para o storage
+    FirebaseService.uploadFirebaseStorage(file);
+
     final url = "http://livrowebservices.com.br/rest/carros/postFotoBase64";
 
     List<int> imageBytes = file.readAsBytesSync();
