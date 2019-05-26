@@ -88,3 +88,11 @@ Manual de como usar as branches app dos carros.
 * 16_Biometria
 
     - Biometria com o plugin local_auth
+    
+* 17_Tests
+
+    - Exemplo de teste unitário
+    
+* 18_FirebaseStorage
+
+    - Exemplo que envia a Foto tirada para o Firebase Storage
