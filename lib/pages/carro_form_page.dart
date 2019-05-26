@@ -169,7 +169,7 @@ class _CarroFormPageState extends State<CarroFormPage> {
       await ImagePicker.pickImage
         (source: ImageSource.camera);
 
-    //FirebaseService.uploadFirebaseStorage(fileCamera);
+    FirebaseService.uploadFirebaseStorage(fileCamera);
 
     setState(() {
     });

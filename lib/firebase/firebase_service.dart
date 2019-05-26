@@ -12,7 +12,7 @@ class FirebaseService {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<Response> cadastrar(String nome, String email, String senha) async {
+  Future<Response> cadastrar(String nome, String email, String senha, {File file}) async {
     try {
       // Usuario do Firebase
       final FirebaseUser fUser = await _auth.createUserWithEmailAndPassword(email: email, password: senha);
@@ -21,6 +21,12 @@ class FirebaseService {
       final userUpdateInfo = UserUpdateInfo();
       userUpdateInfo.displayName = nome;
       userUpdateInfo.photoUrl = "https://s3-sa-east-1.amazonaws.com/livetouch-temp/livrows/foto.png";
+
+      if(file != null) {
+        // Upload da foto
+        userUpdateInfo.photoUrl = await FirebaseService.uploadFirebaseStorage(file);
+      }
+
       fUser.updateProfile(userUpdateInfo);
 
       // Resposta genérica
@@ -80,7 +86,7 @@ class FirebaseService {
     return Response(true,"Login efetuado com sucesso");
   }
 
-  static void uploadFirebaseStorage(File file) async {
+  static Future<String> uploadFirebaseStorage(File file) async {
     print("Upload to Storage $file");
     String fileName = path.basename(file.path);
     final storageRef = FirebaseStorage.instance.ref().child(fileName);
@@ -88,6 +94,7 @@ class FirebaseService {
     final StorageTaskSnapshot task = await storageRef.putFile(file).onComplete;
     final String urlFoto = await task.ref.getDownloadURL();
     print("Storage > $urlFoto");
+    return urlFoto;
   }
 
   Future<void> logout() async {
