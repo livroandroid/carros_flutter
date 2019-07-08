@@ -13,7 +13,7 @@ import 'package:path/path.dart' as path;
 
 class CarroService {
 
-  static bool FAKE = true;
+  static bool FAKE = false;
 
   static Future<List<Carro>> getCarrosByTipo(String tipo, int page) async {
     String json;

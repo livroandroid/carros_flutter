@@ -18,6 +18,8 @@ class _FavoritosPageState extends State<FavoritosPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return _body();
   }
 

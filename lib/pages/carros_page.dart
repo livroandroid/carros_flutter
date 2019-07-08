@@ -54,6 +54,7 @@ class _CarrosPageState extends State<CarrosPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
 
     return RefreshIndicator(
       onRefresh: _onRefresh,
