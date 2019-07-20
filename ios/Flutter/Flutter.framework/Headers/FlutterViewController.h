@@ -18,6 +18,15 @@
 @class FlutterEngine;
 
 /**
+ * The name used for semantic update notifications via `NSNotificationCenter`.
+ *
+ * The object passed as the sender is the `FlutterViewController` associated
+ * with the update.
+ */
+FLUTTER_EXPORT
+extern NSNotificationName const FlutterSemanticsUpdateNotification;
+
+/**
  * A `UIViewController` implementation for Flutter views.
  *
  * Dart execution, channel communication, texture registration, and plugin registration
@@ -32,8 +41,7 @@
  * forth between a FlutterViewController and other `UIViewController`s.
  */
 FLUTTER_EXPORT
-@interface FlutterViewController
-    : UIViewController <FlutterBinaryMessenger, FlutterTextureRegistry, FlutterPluginRegistry>
+@interface FlutterViewController : UIViewController <FlutterTextureRegistry, FlutterPluginRegistry>
 
 /**
  * Initializes this FlutterViewController with the specified `FlutterEngine`.
@@ -110,7 +118,7 @@ FLUTTER_EXPORT
 
 /**
  * Instructs the Flutter Navigator (if any) to push a route on to the navigation
- * stack.  The setInitialRoute method should be prefered if this is called before the
+ * stack.  The setInitialRoute method should be preferred if this is called before the
  * FlutterViewController has come into view.
  *
  * @param route The name of the route to push to the navigation stack.
@@ -150,6 +158,21 @@ FLUTTER_EXPORT
  * view.
  */
 @property(nonatomic, getter=isViewOpaque) BOOL viewOpaque;
+
+/**
+ * The `FlutterEngine` instance for this view controller.
+ */
+@property(weak, nonatomic, readonly) FlutterEngine* engine;
+
+/**
+ * The `FlutterBinaryMessenger` associated with this FlutterViewController (used for communicating
+ * with channels).
+ *
+ * @deprecated Since |FlutterViewController| just forwards binary messenger calls to the
+ * |FlutterEngine|, just use the FlutterEngine.binaryMessenger.
+ */
+@property(nonatomic, readonly) NSObject<FlutterBinaryMessenger>* binaryMessenger
+    __attribute__((deprecated));
 
 @end
 
