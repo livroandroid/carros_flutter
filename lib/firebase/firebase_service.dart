@@ -79,7 +79,8 @@ class FirebaseService {
     );
 
     // Usuario do Firebase
-    final FirebaseUser fuser = await _auth.signInWithCredential(credential);
+    AuthResult result = await _auth.signInWithCredential(credential);
+    final FirebaseUser fuser = result.user;
     print("signed in " + fuser.displayName);
 
     // Resposta genérica
