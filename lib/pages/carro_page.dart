@@ -146,7 +146,7 @@ class _CarroPageState extends State<CarroPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            carro.desc,
+            carro.desc ?? "",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,

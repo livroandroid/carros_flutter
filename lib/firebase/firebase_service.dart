@@ -86,7 +86,7 @@ class FirebaseService {
       firebaseUserUid = user.uid;
       DocumentReference refUser = Firestore.instance.collection("users")
           .document(firebaseUserUid);
-      refUser.setData({'nome':user.displayName,'email':user.email});
+      refUser.setData({'nome':user.displayName,'email':user.email,'urlFoto':user.photoUrl});
     }
   }
 

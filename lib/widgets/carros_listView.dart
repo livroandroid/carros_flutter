@@ -49,7 +49,7 @@ class CarrosListView extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      c.desc,
+                      c.desc ?? "",
                       maxLines: 1,
                       style: TextStyle(
                         fontSize: 16,

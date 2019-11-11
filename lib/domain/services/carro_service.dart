@@ -17,7 +17,7 @@ class CarroService {
       throw SocketException("Internet indisponível.");
     }
 
-    final url = "http://livrowebservices.com.br/rest/carros/tipo/$tipo";
+    final url = "https://carros-springboot.herokuapp.com/api/v1/carros/tipo/$tipo";
     print("> get: $url");
 
     final response = await http.get(url);

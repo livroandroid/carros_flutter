@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "1058831262361",
-    "firebase_url": "https://carros-3a13e.firebaseio.com",
-    "project_id": "carros-3a13e",
-    "storage_bucket": "carros-3a13e.appspot.com"
+    "project_number": "216997426714",
+    "firebase_url": "https://carros-f177d.firebaseio.com",
+    "project_id": "carros-f177d",
+    "storage_bucket": "carros-f177d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1058831262361:android:cc337c3d126e9d00",
+        "mobilesdk_app_id": "1:216997426714:android:cc337c3d126e9d00",
         "android_client_info": {
           "package_name": "br.com.livroandroid.carros"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1058831262361-0v7lu2ik98r218hmpbe904o4mr78q64e.apps.googleusercontent.com",
+          "client_id": "216997426714-9rqahe5ghtjqk9ep88c1clc7n82hc0ta.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.com.livroandroid.carros",
@@ -23,30 +23,30 @@
           }
         },
         {
-          "client_id": "1058831262361-1bn66jf7eg6qdr281snvm1h1v0hq3ijr.apps.googleusercontent.com",
+          "client_id": "216997426714-60bnrlkj78mc978deuml8lon4r7hpdss.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCndjP-FOLkfHzj03Ch5eu8QnzUeABXmY0"
+          "current_key": "AIzaSyABcOPByuWfAVz1awhy7dDS5Di2doVM-Y8"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "1058831262361-1bn66jf7eg6qdr281snvm1h1v0hq3ijr.apps.googleusercontent.com",
+              "client_id": "216997426714-60bnrlkj78mc978deuml8lon4r7hpdss.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "216997426714-qevagk4ovdp8tftgjb2atlh6ljplrqtf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.livroandroid.carros"
+              }
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }
