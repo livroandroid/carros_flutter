@@ -107,7 +107,7 @@ class DrawerList extends StatelessWidget {
   Future _logout(BuildContext context) async {
     print("Logout Firebase");
     final service = FirebaseService();
-    service.logout();
+    await service.logout();
 
     print("Logout");
     pop(context);
