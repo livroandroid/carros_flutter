@@ -91,7 +91,15 @@ class FirebaseService {
   }
 
   Future<void> logout() async {
+    // Deleta este user da collection
+    String uid = firebaseUserUid;
+    print("Delete user $uid");
+    DocumentReference refUser = Firestore.instance.collection("users")
+        .document(uid);
+
+    await refUser.delete();
     await _auth.signOut();
     await _googleSignIn.signOut();
+
   }
 }
