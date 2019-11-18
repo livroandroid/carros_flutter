@@ -1,4 +1,5 @@
 import 'package:carros/domain/response.dart';
+import 'package:carros/firebase/favoritos_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -92,10 +93,8 @@ class FirebaseService {
 
   Future<void> logout() async {
     // Deleta este user da collection
-    String uid = firebaseUserUid;
-    print("Delete user $uid");
-    DocumentReference refUser = Firestore.instance.collection("users")
-        .document(uid);
+    final service = FavoritosService();
+    await service.logout();
 
     await refUser.delete();
     await _auth.signOut();

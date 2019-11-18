@@ -7,12 +7,9 @@ import 'package:flutter/src/widgets/async.dart';
 class FavoritosService {
   getCarros() => _carros.snapshots();
 
-  CollectionReference get _carros {
-    String uid = firebaseUserUid;
-    DocumentReference refUser = Firestore.instance.collection("users")
-        .document(uid);
-    return refUser.collection("carros");
-  }
+  DocumentReference get _user => Firestore.instance.collection("users").document(firebaseUserUid);
+
+  CollectionReference get _carros => _user.collection("carros");
 
   List<Carro> toList(AsyncSnapshot<QuerySnapshot> snapshot) {
     return snapshot.data.documents
@@ -47,5 +44,11 @@ class FavoritosService {
 
     // Verifica se o carro está favoritado
     return await documentSnapshot.exists;
+  }
+
+  logout() {
+    String uid = firebaseUserUid;
+    print("Delete user $uid");
+    _carros
   }
 }
